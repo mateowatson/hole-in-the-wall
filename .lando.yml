@@ -1,0 +1,4 @@
+name: hole-in-the-wall
+recipe: lamp
+config:
+    webroot: .
