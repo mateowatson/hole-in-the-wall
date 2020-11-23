@@ -1,7 +1,7 @@
-import home from './views/home'
-import kitchen from './views/kitchen'
+import Home from './views/Home'
+import Kitchen from './views/Kitchen'
 
 export default [
-    { path: '/', component: home },
-    { path: '/kitchen', component: kitchen }
+    { path: '/', component: Home },
+    { path: '/Kitchen', component: Kitchen }
 ]

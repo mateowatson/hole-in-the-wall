@@ -35,10 +35,8 @@
                     </h2>
 
                     <div class="card-body">
-                        <button v-for="ingredient in ingredients"
-                            class="d-inline-block btn btn-primary mx-1 my-2">
-                            <img :src="ingredient.image" :alt="ingredient.name">
-                        </button>
+                        <ImgButton v-for="(ingredient, idx) in ingredients"
+                            :key="idx" :img="ingredient.image" :text="ingredient.name" />
                     </div>
                 </div>
             </div>
@@ -49,10 +47,13 @@
 
 <script>
 import { mapState } from 'vuex'
+import ImgButton from './partials/ui-components/ImgButton'
 
 export default {
     computed: mapState([
         'ingredients'
-    ])
+    ]),
+
+    components: { ImgButton }
 }
 </script>
