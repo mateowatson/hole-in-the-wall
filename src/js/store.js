@@ -3,28 +3,40 @@ export default {
         ingredients: [
             {
                 name: 'Ground Beef',
-                image: 'images/ground-beef.png'
+                image: 'images/ground-beef.png',
+                amount: 0,
             },
             {
                 name: 'Bun',
                 image: 'images/bun.png',
+                amount: 0,
             },
             {
                 name: 'Bread',
                 image: '',
+                amount: 0,
             },
             {
                 name: 'Ketchup',
                 image: '',
+                amount: 0,
             },
         ],
 
         actions: [
-            'Make Patty',
+            {
+                name: 'Make Patty',
+                image: '',
+                amount: 0,
+            },
         ],
 
         cookingMethods: [
-            'Grill'
+            {
+                name: 'Grill',
+                image: '',
+                amount: 0,
+            },
         ],
 
         items: [
@@ -75,9 +87,22 @@ export default {
                 }
             ]
         ],
+
+        addedIngredients: [],
+
+        addedActions: [],
+
+        addedCookingMethods: [],
     },
 
+
     mutations: {
-        
+        m_thing_increment(state, thing) {
+            let match = state[thing.type].find((el) => {
+                return el.name === thing.name
+            })
+            if(!match) return
+            match.amount++
+        }
     },
 }

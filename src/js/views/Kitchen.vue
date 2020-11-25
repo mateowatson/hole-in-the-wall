@@ -1,20 +1,61 @@
 <template>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xl-3 p-0 position-fixed vh-100 overflow-auto bg-dark text-light">
+        <div class="col-xl-2 p-0 position-fixed vh-100 overflow-auto bg-dark text-light">
             <Ticket v-for="(ticket, idx) in tickets"
                 :key="idx" :ticket="ticket" />
         </div>
 
-        <div class="col-xl-9 offset-xl-3">
+        <div class="col-xl-2 offset-xl-2 position-fixed vh-100 overflow-auto
+            border-right">
+            <h2 class="h6">
+                Plate It!
+                <pre>
+                    {{ingredients}}
+                </pre>
+                <pre>
+                    {{actions}}
+                </pre>
+                <pre>
+                    {{cookingMethods}}
+                </pre>
+            </h2>
+        </div>
+
+        <div class="col-xl-8 offset-xl-4">
             <div class="card mt-3">
                 <div class="card-body">
-                    <h2 class="card-title">
+                    <h2 class="h6">
                         Ingredients
                     </h2>
 
                     <ImgButton v-for="(ingredient, idx) in ingredients"
-                        :key="idx" :img="ingredient.image" :text="ingredient.name" />
+                        :key="idx+'ing'" :thing="ingredient"
+                        :type="'ingredients'" />
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h2 class="h6">
+                        Actions
+                    </h2>
+
+                    <ImgButton v-for="(action, idx) in actions"
+                        :key="idx+'act'" :thing="action"
+                        :type="'actions'" />
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h2 class="h6">
+                        Cook
+                    </h2>
+
+                    <ImgButton v-for="(cookingMethod, idx) in cookingMethods"
+                        :key="idx+'coo'" :thing="cookingMethod"
+                        :type="'cookingMethods'" />
                 </div>
             </div>
         </div>
@@ -29,7 +70,7 @@ import Ticket from './partials/ui-components/Ticket'
 
 export default {
     computed: mapState([
-        'ingredients','tickets','items',
+        'ingredients','tickets','items','actions','cookingMethods'
     ]),
 
     components: { ImgButton, Ticket }

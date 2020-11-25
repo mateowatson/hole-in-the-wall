@@ -1,10 +1,11 @@
 <template>
     <button class="d-inline-block btn btn-primary mx-1 my-2 position-relative"
-        @mouseenter="showTooltip = true" @mouseleave="showTooltip = false">
-        <img :src="img" :alt="text" class="position-relative">
+        @mouseenter="showTooltip = true" @mouseleave="showTooltip = false"
+        @click="incrementAmount">
+        <img :src="thing.image" :alt="thing.name" class="position-relative">
         <transition name="hitw_tooltip-up">
             <Tooltip v-if="showTooltip">
-                {{ text }}
+                {{ thing.name }}
             </Tooltip>
         </transition>
     </button>
@@ -14,12 +15,20 @@
 import Tooltip from './Tooltip'
 
 export default {
+    props: ['thing', 'type'],
     data() {
         return {
             showTooltip: false
         }
     },
-    props: ['img', 'text'],
+    methods: {
+        incrementAmount() {
+            this.$store.commit('m_thing_increment', {
+                type: this.type,
+                ...this.thing
+            })
+        },
+    },
     components: { Tooltip }
 }
 </script>
