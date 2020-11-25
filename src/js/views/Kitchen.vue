@@ -1,43 +1,20 @@
 <template>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xl-3 position-fixed vh-100 overflow-auto">
-            <p>
-                Dolor laboris ad esse aute consectetur pariatur eiusmod laborum sunt. Sunt duis exercitation dolor voluptate consequat id eu proident ut culpa. Fugiat ullamco cupidatat enim pariatur aliquip enim laboris aliquip dolor id consectetur veniam. Cillum duis non deserunt in minim. Nostrud tempor eiusmod esse nostrud. Mollit labore voluptate magna officia qui laborum minim irure.
-            </p>
-
-            <p>
-                Dolor laboris ad esse aute consectetur pariatur eiusmod laborum sunt. Sunt duis exercitation dolor voluptate consequat id eu proident ut culpa. Fugiat ullamco cupidatat enim pariatur aliquip enim laboris aliquip dolor id consectetur veniam. Cillum duis non deserunt in minim. Nostrud tempor eiusmod esse nostrud. Mollit labore voluptate magna officia qui laborum minim irure.
-            </p>
-
-            <p>
-                Dolor laboris ad esse aute consectetur pariatur eiusmod laborum sunt. Sunt duis exercitation dolor voluptate consequat id eu proident ut culpa. Fugiat ullamco cupidatat enim pariatur aliquip enim laboris aliquip dolor id consectetur veniam. Cillum duis non deserunt in minim. Nostrud tempor eiusmod esse nostrud. Mollit labore voluptate magna officia qui laborum minim irure.
-            </p>
-
-            <p>
-                Dolor laboris ad esse aute consectetur pariatur eiusmod laborum sunt. Sunt duis exercitation dolor voluptate consequat id eu proident ut culpa. Fugiat ullamco cupidatat enim pariatur aliquip enim laboris aliquip dolor id consectetur veniam. Cillum duis non deserunt in minim. Nostrud tempor eiusmod esse nostrud. Mollit labore voluptate magna officia qui laborum minim irure.
-            </p>
-
-            <p>
-                Dolor laboris ad esse aute consectetur pariatur eiusmod laborum sunt. Sunt duis exercitation dolor voluptate consequat id eu proident ut culpa. Fugiat ullamco cupidatat enim pariatur aliquip enim laboris aliquip dolor id consectetur veniam. Cillum duis non deserunt in minim. Nostrud tempor eiusmod esse nostrud. Mollit labore voluptate magna officia qui laborum minim irure.
-            </p>
-
-            <p>
-                Dolor laboris ad esse aute consectetur pariatur eiusmod laborum sunt. Sunt duis exercitation dolor voluptate consequat id eu proident ut culpa. Fugiat ullamco cupidatat enim pariatur aliquip enim laboris aliquip dolor id consectetur veniam. Cillum duis non deserunt in minim. Nostrud tempor eiusmod esse nostrud. Mollit labore voluptate magna officia qui laborum minim irure.
-            </p>
+        <div class="col-xl-3 p-0 position-fixed vh-100 overflow-auto bg-dark text-light">
+            <Ticket v-for="(ticket, idx) in tickets"
+                :key="idx" :ticket="ticket" />
         </div>
 
         <div class="col-xl-9 offset-xl-3">
-            <div class="card mt-5">
+            <div class="card mt-3">
                 <div class="card-body">
                     <h2 class="card-title">
                         Ingredients
                     </h2>
 
-                    <div class="card-body">
-                        <ImgButton v-for="(ingredient, idx) in ingredients"
-                            :key="idx" :img="ingredient.image" :text="ingredient.name" />
-                    </div>
+                    <ImgButton v-for="(ingredient, idx) in ingredients"
+                        :key="idx" :img="ingredient.image" :text="ingredient.name" />
                 </div>
             </div>
         </div>
@@ -48,12 +25,13 @@
 <script>
 import { mapState } from 'vuex'
 import ImgButton from './partials/ui-components/ImgButton'
+import Ticket from './partials/ui-components/Ticket'
 
 export default {
     computed: mapState([
-        'ingredients'
+        'ingredients','tickets','items',
     ]),
 
-    components: { ImgButton }
+    components: { ImgButton, Ticket }
 }
 </script>

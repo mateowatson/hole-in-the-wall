@@ -1,8 +1,10 @@
 @import "bootstrap/bootstrap";
 
 .hitw_tooltip {
-    left: 0;
+    left: 50%;
     bottom: calc(100% + 12px);
+    width: 200%;
+    transform: translateX(-50%);
 
     &:before {
         content: " ";
@@ -15,5 +17,16 @@
         background-color: $dark;
         transform-origin: center;
         transform: translateX(-50%) rotate(45deg);
+    }
+}
+
+.hitw_tooltip-up {
+    &-enter, &-leave-to {
+        transform: translateX(-50%) translateY(6px);
+        opacity: 0;
+    }
+
+    &-enter-active, &-leave-active {
+        transition: all .3s ease;
     }
 }
