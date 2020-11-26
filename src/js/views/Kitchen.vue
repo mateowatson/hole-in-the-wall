@@ -2,24 +2,38 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xl-2 p-0 position-fixed vh-100 overflow-auto bg-dark text-light">
-            <Ticket v-for="(ticket, idx) in tickets"
-                :key="idx" :ticket="ticket" />
+            <Ticket v-for="(ticket, idx) in tickets" :key="idx" :ticket="ticket" />
         </div>
 
         <div class="col-xl-2 offset-xl-2 position-fixed vh-100 overflow-auto
             border-right">
-            <h2 class="h6">
+            <h2 class="h5">
                 Plate It!
-                <pre>
-                    {{ingredients}}
-                </pre>
-                <pre>
-                    {{actions}}
-                </pre>
-                <pre>
-                    {{cookingMethods}}
-                </pre>
             </h2>
+
+            <p>Produced items here!</p>
+
+            <h2 class="h5">Ingredients</h2>
+
+            <ul>
+                <ThingAmount v-for="(ingredient, idx) in ingredients" :key="idx+'ing-amt'"
+                    :thing="ingredient" :type="'ingredients'" />
+            </ul>
+
+            <h2 class="h5">Actions</h2>
+
+            <ul>
+                <ThingAmount v-for="(action, idx) in actions" :key="idx+'act-amt'"
+                    :thing="action" :type="'actions'" />
+            </ul>
+
+            <h2 class="h5">Cooking Methods</h2>
+
+            <ul>
+                <ThingAmount v-for="(cookingMethod, idx) in cookingMethods"
+                    :key="idx+'act-amt'" :thing="cookingMethod"
+                    :type="'cookingMethods'" />
+            </ul>
         </div>
 
         <div class="col-xl-8 offset-xl-4">
@@ -67,12 +81,13 @@
 import { mapState } from 'vuex'
 import ImgButton from './partials/ui-components/ImgButton'
 import Ticket from './partials/ui-components/Ticket'
+import ThingAmount from './partials/ui-components/ThingAmount'
 
 export default {
     computed: mapState([
         'ingredients','tickets','items','actions','cookingMethods'
     ]),
 
-    components: { ImgButton, Ticket }
+    components: { ImgButton, Ticket, ThingAmount }
 }
 </script>

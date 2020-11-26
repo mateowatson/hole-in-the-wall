@@ -103,6 +103,15 @@ export default {
             })
             if(!match) return
             match.amount++
-        }
+        },
+
+        m_thing_decrement(state, thing) {
+            let match = state[thing.type].find((el) => {
+                return el.name === thing.name
+            })
+            if(!match) return
+            if(0 === match.amount) return
+            match.amount--
+        },
     },
 }

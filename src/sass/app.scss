@@ -30,3 +30,13 @@
         transition: all .3s ease;
     }
 }
+
+.fade {
+    &-enter, &-leave-to {
+        opacity: 0;
+    }
+
+    &-enter-active, &-leave-active {
+        transition: all .3s ease;
+    }
+}
