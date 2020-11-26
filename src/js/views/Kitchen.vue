@@ -7,11 +7,20 @@
 
         <div class="col-xl-2 offset-xl-2 position-fixed vh-100 overflow-auto
             border-right">
+            <h2 class="h5">Items</h2>
+
+            <ul>
+                <ThingAmount v-for="(item, idx) in items" :key="idx+'item-amt'"
+                    :thing="item" :type="'items'" />
+            </ul>
+
             <h2 class="h5">
-                Plate It!
+                Possible Items
             </h2>
 
-            <p>Produced items here!</p>
+            <ImgButton v-for="(possibleItem, idx) in possibleItems"
+                :key="idx+'pi'" :thing="possibleItem"
+                :type="'items'" />
 
             <h2 class="h5">Ingredients</h2>
 
@@ -78,15 +87,20 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import ImgButton from './partials/ui-components/ImgButton'
 import Ticket from './partials/ui-components/Ticket'
 import ThingAmount from './partials/ui-components/ThingAmount'
 
 export default {
-    computed: mapState([
-        'ingredients','tickets','items','actions','cookingMethods'
-    ]),
+    computed: {
+        ...mapState([
+            'ingredients','tickets','items','actions','cookingMethods'
+        ]),
+        ...mapGetters([
+            'possibleItems'
+        ]),
+    },
 
     components: { ImgButton, Ticket, ThingAmount }
 }
