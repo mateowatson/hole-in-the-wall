@@ -93,10 +93,13 @@ export default {
         ],
 
         tickets: [
-            [
-                { item: 'Burger', qty: 1 },
-                { item: 'Meatloaf', qty: 3 }
-            ]
+            {
+                name: '20201126085728',
+                items: [
+                    { name: 'Burger', qty: 1, amount: 0 },
+                    { name: 'Meatloaf', qty: 3, amount: 0 }
+                ],
+            }
         ],
 
         addedIngredients: [],
@@ -123,13 +126,13 @@ export default {
                     ingredient.amount = ingredient.amount - requiredIngredient.amount
                 })
                 match.reqs.actions.forEach(requiredAction => {
-                    let action = state.actions.find((el) => {
+                    let action = state.actions.find(el => {
                         return el.name === requiredAction.name
                     })
                     action.amount = action.amount - requiredAction.amount
                 })
                 match.reqs.cookingMethods.forEach(requiredCookingMethod => {
-                    let cookingMethod = state.cookingMethods.find((el) => {
+                    let cookingMethod = state.cookingMethods.find(el => {
                         return el.name === requiredCookingMethod.name
                     })
                     cookingMethod.amount = cookingMethod.amount - requiredCookingMethod.amount
@@ -138,7 +141,7 @@ export default {
         },
 
         m_thing_decrement(state, thing) {
-            let match = state[thing.type].find((el) => {
+            let match = state[thing.type].find(el => {
                 return el.name === thing.name
             })
             if(!match) return
@@ -148,6 +151,33 @@ export default {
     },
 
     getters: {
+        possibleTickets: state => {
+            let possibleTickets = []
+
+            state.tickets.forEach(ticket => {
+                let matchingTicketItems = 0
+                
+                ticket.items.forEach(ticketItem => {
+                    let matchesTicketItem = false
+
+                    state.items.forEach(item => {
+                        if(item.name === ticketItem.name &&
+                            item.amount === ticketItem.qty) {
+                            matchesTicketItem = true
+                        }
+                    })
+
+                    if(matchesTicketItem)
+                        matchingTicketItems++
+                })
+                
+                if(matchingTicketItems === ticket.items.length)
+                    possibleTickets.push(ticket)
+            })
+
+            return possibleTickets
+        },
+
         possibleItems: state => {
             let possibleItems = []
 

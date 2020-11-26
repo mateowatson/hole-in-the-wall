@@ -2,41 +2,40 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xl-2 p-0 position-fixed vh-100 overflow-auto bg-dark text-light">
-            <Ticket v-for="(ticket, idx) in tickets" :key="idx" :ticket="ticket" />
+            <h2 class="h5 p-3">Tickets</h2>
+            <Ticket v-for="(ticket, idx) in tickets" :key="idx+'tick'" :ticket="ticket" />
         </div>
 
         <div class="col-xl-2 offset-xl-2 position-fixed vh-100 overflow-auto
             border-right">
-            <h2 class="h5">Items</h2>
+            <h2 class="h5 pt-3">Items</h2>
 
             <ul>
                 <ThingAmount v-for="(item, idx) in items" :key="idx+'item-amt'"
                     :thing="item" :type="'items'" />
             </ul>
 
-            <h2 class="h5">
-                Possible Items
-            </h2>
+            <h2 class="h5 pt-3">Possible Items</h2>
 
             <ImgButton v-for="(possibleItem, idx) in possibleItems"
                 :key="idx+'pi'" :thing="possibleItem"
                 :type="'items'" />
 
-            <h2 class="h5">Ingredients</h2>
+            <h2 class="h5 pt-3">Ingredients</h2>
 
             <ul>
                 <ThingAmount v-for="(ingredient, idx) in ingredients" :key="idx+'ing-amt'"
                     :thing="ingredient" :type="'ingredients'" />
             </ul>
 
-            <h2 class="h5">Actions</h2>
+            <h2 class="h5 pt-3">Actions</h2>
 
             <ul>
                 <ThingAmount v-for="(action, idx) in actions" :key="idx+'act-amt'"
                     :thing="action" :type="'actions'" />
             </ul>
 
-            <h2 class="h5">Cooking Methods</h2>
+            <h2 class="h5 pt-3">Cooking Methods</h2>
 
             <ul>
                 <ThingAmount v-for="(cookingMethod, idx) in cookingMethods"
