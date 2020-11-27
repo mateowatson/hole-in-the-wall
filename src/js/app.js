@@ -4,6 +4,16 @@ import routes from './routes'
 import Vuex from 'vuex'
 import vuexstore from './store'
 
+window.hitw_dt = 0;
+window.hitw_last = 0;
+function setGameTime(ms) {
+    requestAnimationFrame(setGameTime)
+    const t = ms / 1000; // Let's work in seconds
+    window.hitw_dt = t - window.hitw_last;
+    window.hitw_last = t;
+}
+requestAnimationFrame(setGameTime)
+
 Vue.use(Vuex)
 
 Vue.use(VueRouter)
@@ -17,14 +27,6 @@ const router = new VueRouter({
 const app = new Vue({
     el: '#hitw-app',
     router,
-    store,
-    methods: {
-        setGameTime(ms) {
-            store.dispatch('a_set_game_time', ms)
-            requestAnimationFrame(this.setGameTime)
-        }
-    },
-    created() {
-        requestAnimationFrame(this.setGameTime)
-    }
+    store
 })
+

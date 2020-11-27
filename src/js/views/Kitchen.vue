@@ -3,6 +3,7 @@
     <div class="row">
         <div class="hitw_tickets col-lg-2 p-0 bg-dark text-light">
             <h2 class="h5 p-3">Tickets</h2>
+            <Timer />
             <Ticket v-for="(ticket, idx) in tickets" :key="idx+'tick'" :ticket="ticket" />
         </div>
 
@@ -74,6 +75,7 @@ import { mapState, mapGetters } from 'vuex'
 import ImgButton from './partials/components/ImgButton'
 import Ticket from './partials/components/Ticket'
 import ItemImgButton from './partials/components/ItemImgButton'
+import Timer from './partials/components/Timer'
 
 export default {
     computed: {
@@ -90,6 +92,6 @@ export default {
 
     },
 
-    components: { ImgButton, Ticket, ItemImgButton }
+    components: { ImgButton, Ticket, ItemImgButton, Timer }
 }
 </script>
