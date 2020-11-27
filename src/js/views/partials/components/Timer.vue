@@ -1,8 +1,6 @@
 <template>
-    <div class="progress">
-
-        <div class="progress-bar" role="progressbar" :aria-valuenow="percTimeLeft"
-        aria-valuemin="0" aria-valuemax="100" :style="'width: '+percTimeLeft+'%;'"></div>
+    <div class="hitw_progress">
+        <div class="hitw_progress__bar" :style="'width: '+percTimeLeft+'%;'"></div>
     </div>
 </template>
 
@@ -28,15 +26,17 @@ export default {
             return 100 - this.percTimeExpired
         },
     },
+
     methods: {
         setLastTime(ms) {
             this.lastTime = ms
-            setTimeout(this.setLastTime, 500, Date.now() / 1000)
+            setTimeout(this.setLastTime, 100, Date.now() / 1000)
         },
     },
+    
     created() {
         this.startTime = Date.now() / 1000
-        setTimeout(this.setLastTime, 500, Date.now() / 1000)
+        setTimeout(this.setLastTime, 100, Date.now() / 1000)
     },
 }
 </script>
