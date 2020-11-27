@@ -3,7 +3,8 @@
         <li v-if="thing.amount">
             {{ thing.amount }}
             {{ thing.name }}
-            <button class="badge badge-danger border-0" @click="decrementAmount">
+            <button class="badge badge-danger border-0" @click="decrementAmount"
+                v-if="'items' !== type">
                 -1
             </button>
         </li>

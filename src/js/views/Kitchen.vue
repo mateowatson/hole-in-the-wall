@@ -45,6 +45,13 @@
         </div>
 
         <div class="col-xl-8 offset-xl-4">
+            <h2 class="h6 mt-3">
+                Money:
+                <span :class="money >= 0 ? 'badge badge-success' : 'badge badge-danger'">
+                    ${{ money.toFixed(2) }}
+                </span>
+            </h2>
+
             <div class="card mt-3">
                 <div class="card-body">
                     <h2 class="h6">
@@ -94,7 +101,7 @@ import ThingAmount from './partials/ui-components/ThingAmount'
 export default {
     computed: {
         ...mapState([
-            'ingredients','tickets','items','actions','cookingMethods'
+            'ingredients','tickets','items','actions','cookingMethods','money'
         ]),
         ...mapGetters([
             'possibleItems'

@@ -1,5 +1,7 @@
 export default {
     state: {
+        money: 300.00,
+
         ingredients: [
             {
                 name: 'Ground Beef',
@@ -55,6 +57,8 @@ export default {
                 plural: 'Burgers',
                 image: '',
                 amount: 0,
+                cost: 2,
+                price: 8,
                 reqs: {
                     ingredients: [
                         { name: 'Ground Beef', amount: 1 },
@@ -76,6 +80,8 @@ export default {
                 plural: 'Meatloafs',
                 image: '',
                 amount: 0,
+                cost: 4,
+                price: 10,
                 reqs: {
                     ingredients: [
                         { name: 'Ground Beef', amount: 1 },
@@ -96,8 +102,15 @@ export default {
             {
                 name: '20201126085728',
                 items: [
-                    { name: 'Burger', qty: 1, amount: 0 },
-                    { name: 'Meatloaf', qty: 3, amount: 0 }
+                    { name: 'Burger', qty: 1 },
+                    { name: 'Meatloaf', qty: 3 }
+                ],
+            },
+            {
+                name: '20201126105733',
+                items: [
+                    { name: 'Burger', qty: 3 },
+                    { name: 'Meatloaf', qty: 2 }
                 ],
             }
         ],
@@ -111,6 +124,29 @@ export default {
 
 
     mutations: {
+        m_ticket_fulfill(state, ticket) {
+            state.tickets = state.tickets.filter(stateTicket => {
+                return stateTicket.name !== ticket.name
+            })
+            // Remove items
+            ticket.items.forEach(item => {
+                state.items.forEach(stateItem => {
+                    if(item.name === stateItem.name)
+                        stateItem.amount -= item.qty
+                })
+            })
+            // Add profit
+            let ticketPrice = ticket.items.reduce((acc, item) => {
+                state.items.forEach(stateItem => {
+                    if(stateItem.name === item.name) {
+                        acc = acc + (stateItem.price * item.qty)
+                    }
+                })
+                return acc
+            }, 0)
+            state.money += ticketPrice
+        },
+
         m_thing_increment(state, thing) {
             let match = state[thing.type].find((el) => {
                 return el.name === thing.name
@@ -118,6 +154,7 @@ export default {
             if(!match) return
             match.amount++
 
+            // Reduce resources and money
             if('items' === thing.type) {
                 match.reqs.ingredients.forEach(requiredIngredient => {
                     let ingredient = state.ingredients.find((el) => {
@@ -137,10 +174,12 @@ export default {
                     })
                     cookingMethod.amount = cookingMethod.amount - requiredCookingMethod.amount
                 })
+                state.money -= match.cost
             }
         },
 
         m_thing_decrement(state, thing) {
+            if('items' === thing.type) return
             let match = state[thing.type].find(el => {
                 return el.name === thing.name
             })
@@ -162,7 +201,7 @@ export default {
 
                     state.items.forEach(item => {
                         if(item.name === ticketItem.name &&
-                            item.amount === ticketItem.qty) {
+                            item.amount >= ticketItem.qty) {
                             matchesTicketItem = true
                         }
                     })

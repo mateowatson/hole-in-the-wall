@@ -8,6 +8,11 @@
                 {{ thing.name }}
             </Tooltip>
         </transition>
+        <span v-if="'items' === type"
+            class="badge badge-danger position-absolute"
+            style="top: 0; left: 0; transform: translate(-50%, -50%);">
+            -${{ thing.cost }}
+        </span>
     </button>
 </template>
 
