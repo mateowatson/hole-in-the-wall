@@ -1,13 +1,12 @@
 <template>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xl-2 p-0 position-fixed vh-100 overflow-auto bg-dark text-light">
+        <div class="hitw_tickets col-lg-2 p-0 bg-dark text-light">
             <h2 class="h5 p-3">Tickets</h2>
             <Ticket v-for="(ticket, idx) in tickets" :key="idx+'tick'" :ticket="ticket" />
         </div>
 
-        <div class="col-xl-2 offset-xl-2 position-fixed vh-100 overflow-auto
-            border-right">
+        <div class="hitw_possible-items col-lg-2 offset-lg-2 border-right">
             <h2 class="h5 pt-3">Possible Items</h2>
 
             <ImgButton v-for="(possibleItem, idx) in possibleItems"
@@ -22,7 +21,7 @@
             </ul>
         </div>
 
-        <div class="col-xl-8 offset-xl-4">
+        <div class="hitw_main-board col-lg-8 offset-lg-4">
             <h2 class="h6 mt-3">
                 Money:
                 <span :class="money >= 0 ? 'badge badge-success' : 'badge badge-danger'">

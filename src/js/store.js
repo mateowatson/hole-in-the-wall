@@ -100,6 +100,12 @@ export default {
 
         tickets: [
             {
+                name: '20201126205534',
+                items: [
+                    { name: 'Burger', qty: 1 },
+                ],
+            },
+            {
                 name: '20201126085728',
                 items: [
                     { name: 'Burger', qty: 1 },

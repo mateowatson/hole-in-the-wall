@@ -1,5 +1,49 @@
 @import "bootstrap/bootstrap";
 
+.hitw_tickets {
+    position: fixed;
+    height: 33vh;
+    overflow: auto;
+    @include media-breakpoint-up(lg) {
+        position: fixed;
+        height: 100vh;
+        overflow: auto;
+    }
+}
+
+.hitw_possible-items {
+    border-top: 10px solid $primary;
+    top: 33vh;
+    position: fixed;
+    height: 33vh;
+    overflow: auto;
+    @include media-breakpoint-up(lg) {
+        border-top: none;
+        top: auto;
+        position: fixed;
+        height: 100vh;
+        overflow: auto;
+    }
+}
+
+.hitw_main-board {
+    @include media-breakpoint-down(md) {
+        border-top: 10px solid $primary;
+        top: 66vh;
+        position: fixed;
+        height: 33vh;
+        overflow: auto;
+    }
+}
+
+.hitw_badge-btn-mobile {
+    @include media-breakpoint-down(md) {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+    }
+}
+
 .hitw_tooltip {
     left: 50%;
     bottom: calc(100% + 12px);
