@@ -13,11 +13,13 @@
             style="top: 0; left: 0; transform: translate(-50%, -50%);">
             -${{ thing.cost }}
         </span>
+        <ButtonAmount v-if="'items' !== type" :thing="thing" :type="type" />
     </button>
 </template>
 
 <script>
 import Tooltip from './Tooltip'
+import ButtonAmount from './ButtonAmount'
 
 export default {
     props: ['thing', 'type'],
@@ -34,6 +36,6 @@ export default {
             })
         },
     },
-    components: { Tooltip }
+    components: { Tooltip, ButtonAmount }
 }
 </script>

@@ -20,28 +20,6 @@
             <ImgButton v-for="(possibleItem, idx) in possibleItems"
                 :key="idx+'pi'" :thing="possibleItem"
                 :type="'items'" />
-
-            <h2 class="h5 pt-3">Ingredients</h2>
-
-            <ul>
-                <ThingAmount v-for="(ingredient, idx) in ingredients" :key="idx+'ing-amt'"
-                    :thing="ingredient" :type="'ingredients'" />
-            </ul>
-
-            <h2 class="h5 pt-3">Actions</h2>
-
-            <ul>
-                <ThingAmount v-for="(action, idx) in actions" :key="idx+'act-amt'"
-                    :thing="action" :type="'actions'" />
-            </ul>
-
-            <h2 class="h5 pt-3">Cooking Methods</h2>
-
-            <ul>
-                <ThingAmount v-for="(cookingMethod, idx) in cookingMethods"
-                    :key="idx+'act-amt'" :thing="cookingMethod"
-                    :type="'cookingMethods'" />
-            </ul>
         </div>
 
         <div class="col-xl-8 offset-xl-4">
