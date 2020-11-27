@@ -8,18 +8,17 @@
 
         <div class="col-xl-2 offset-xl-2 position-fixed vh-100 overflow-auto
             border-right">
-            <h2 class="h5 pt-3">Items</h2>
-
-            <ul>
-                <ThingAmount v-for="(item, idx) in items" :key="idx+'item-amt'"
-                    :thing="item" :type="'items'" />
-            </ul>
-
             <h2 class="h5 pt-3">Possible Items</h2>
 
             <ImgButton v-for="(possibleItem, idx) in possibleItems"
                 :key="idx+'pi'" :thing="possibleItem"
                 :type="'items'" />
+            <h2 class="h5 pt-3">Items</h2>
+
+            <ul class="list-unstyled">
+                <ThingAmount v-for="(item, idx) in items" :key="idx+'item-amt'"
+                    :thing="item" :type="'items'" />
+            </ul>
         </div>
 
         <div class="col-xl-8 offset-xl-4">

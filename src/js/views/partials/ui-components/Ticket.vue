@@ -19,11 +19,8 @@
 
             <div class="col-xl-4 d-flex align-items-center justify-content-center"
                 v-if="isPossible">
-                <button class="btn" style="box-shadow: none;" @click="fulfill">
-                    <svg class="bi text-success" width="24" height="24"
-                        fill="currentColor">
-                        <use xlink:href="images/icons/bootstrap-icons.svg#plus-circle-fill"/>
-                    </svg>
+                <button class="badge badge-success border-0" @click="fulfill">
+                    +
                 </button>
             </div>
         </div>
