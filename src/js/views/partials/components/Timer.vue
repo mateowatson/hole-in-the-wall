@@ -1,10 +1,8 @@
 <template>
-    <div class="progressss">
-        {{lastTime}}<br>
-        {{timeLeft}}
-        
-        <div class="progressss-bar" role="progressssbar" aria-valuenow="0"
-        aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress">
+
+        <div class="progress-bar" role="progressbar" :aria-valuenow="percTimeLeft"
+        aria-valuemin="0" aria-valuemax="100" :style="'width: '+percTimeLeft+'%;'"></div>
     </div>
 </template>
 
@@ -12,24 +10,33 @@
 export default {
     data() {
         return {
+            startTime: 0,
             lastTime: 0,
             secondsAllotted: 30
         }
     },
     computed: {
-        timeLeft() {
-            return ((this.secondsAllotted - this.lastTime)/30) * 100
+        secondsExpired() {
+            return (this.lastTime - this.startTime).toFixed(2)
+        },
+
+        percTimeExpired() {
+            return ((this.secondsExpired/this.secondsAllotted) * 100).toFixed(2)
+        },
+
+        percTimeLeft() {
+            return 100 - this.percTimeExpired
         },
     },
     methods: {
-        setLastTime() {
-            this.lastTime = window.hitw_last
-            setTimeout(this.setLastTime, 500)
+        setLastTime(ms) {
+            this.lastTime = ms
+            setTimeout(this.setLastTime, 500, Date.now() / 1000)
         },
     },
     created() {
-        this.startTime = Date.now()
-        setTimeout(this.setLastTime, 500)
+        this.startTime = Date.now() / 1000
+        setTimeout(this.setLastTime, 500, Date.now() / 1000)
     },
 }
 </script>
