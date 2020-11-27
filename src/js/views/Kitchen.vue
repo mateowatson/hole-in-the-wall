@@ -78,11 +78,16 @@ import ItemImgButton from './partials/components/ItemImgButton'
 export default {
     computed: {
         ...mapState([
-            'ingredients','tickets','items','actions','cookingMethods','money'
+            'ingredients','tickets','items','actions','cookingMethods','money',
+            'lastTime','deltaTime'
         ]),
         ...mapGetters([
             'possibleItems'
         ]),
+    },
+
+    created() {
+
     },
 
     components: { ImgButton, Ticket, ItemImgButton }

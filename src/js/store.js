@@ -1,5 +1,9 @@
 export default {
     state: {
+        lastTime: 0,
+
+        deltaTime: 0,
+
         money: 300.00,
 
         ingredients: [
@@ -104,6 +108,8 @@ export default {
                 items: [
                     { name: 'Burger', qty: 1 },
                 ],
+                timeCreated: '20201126223810',
+                secondsAlloted: 15,
             },
             {
                 name: '20201126085728',
@@ -111,6 +117,8 @@ export default {
                     { name: 'Burger', qty: 1 },
                     { name: 'Meatloaf', qty: 3 }
                 ],
+                timeCreated: '20201126223810',
+                secondsAlloted: 30,
             },
             {
                 name: '20201126105733',
@@ -118,6 +126,8 @@ export default {
                     { name: 'Burger', qty: 3 },
                     { name: 'Meatloaf', qty: 2 }
                 ],
+                timeCreated: '20201126223810',
+                secondsAlloted: 45,
             }
         ],
 
@@ -130,6 +140,14 @@ export default {
 
 
     mutations: {
+        m_set_last_time(state, t) {
+            state.lastTime = t
+        },
+
+        m_set_delta_time(state, dt) {
+            state.deltaTime = dt
+        },
+
         m_ticket_fulfill(state, ticket) {
             state.tickets = state.tickets.filter(stateTicket => {
                 return stateTicket.name !== ticket.name
@@ -193,6 +211,15 @@ export default {
             if(0 === match.amount) return
             match.amount--
         },
+    },
+
+    actions: {
+        a_set_game_time({ state, commit }, ms) {
+            const t = ms / 1000; // Let's work in seconds
+            const dt = t - state.lastTime;
+            commit('m_set_last_time', t)
+            commit('m_set_delta_time', dt)
+        }
     },
 
     getters: {

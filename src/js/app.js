@@ -15,6 +15,16 @@ const router = new VueRouter({
 })
 
 const app = new Vue({
+    el: '#hitw-app',
     router,
-    store
-}).$mount('#hitw-app')
+    store,
+    methods: {
+        setGameTime(ms) {
+            store.dispatch('a_set_game_time', ms)
+            requestAnimationFrame(this.setGameTime)
+        }
+    },
+    created() {
+        requestAnimationFrame(this.setGameTime)
+    }
+})
