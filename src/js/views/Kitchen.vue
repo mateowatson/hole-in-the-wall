@@ -3,7 +3,9 @@
     <div class="row">
         <div class="hitw_tickets col-lg-2 p-0 bg-dark text-light">
             <h2 class="h5 p-3">Tickets</h2>
-            <Timer />
+            <div class="pl-3 pr-3 pb-3">
+                <Timer />
+            </div>
             <Ticket v-for="(ticket, idx) in tickets" :key="idx+'tick'" :ticket="ticket" />
         </div>
 
