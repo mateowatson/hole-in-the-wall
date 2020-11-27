@@ -13,10 +13,11 @@
             <ImgButton v-for="(possibleItem, idx) in possibleItems"
                 :key="idx+'pi'" :thing="possibleItem"
                 :type="'items'" />
+
             <h2 class="h5 pt-3">Items</h2>
 
             <ul class="list-unstyled">
-                <ThingAmount v-for="(item, idx) in items" :key="idx+'item-amt'"
+                <ItemImgButton v-for="(item, idx) in items" :key="idx+'item-amt'"
                     :thing="item" :type="'items'" />
             </ul>
         </div>
@@ -71,9 +72,9 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import ImgButton from './partials/ui-components/ImgButton'
-import Ticket from './partials/ui-components/Ticket'
-import ThingAmount from './partials/ui-components/ThingAmount'
+import ImgButton from './partials/components/ImgButton'
+import Ticket from './partials/components/Ticket'
+import ItemImgButton from './partials/components/ItemImgButton'
 
 export default {
     computed: {
@@ -85,6 +86,6 @@ export default {
         ]),
     },
 
-    components: { ImgButton, Ticket, ThingAmount }
+    components: { ImgButton, Ticket, ItemImgButton }
 }
 </script>
