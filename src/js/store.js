@@ -36,6 +36,9 @@ import toast from './items/toast'
 
 export default {
     state: {
+        secondsLeftInDay: 15,
+
+        // referring to current ticket
         timeUp: false,
 
         newStartTime: 0,
@@ -170,6 +173,10 @@ export default {
 
 
     mutations: {
+        m_reduce_seconds_left_in_day(state, s) {
+            state.secondsLeftInDay -= s
+        },
+
         m_ticket_lose_first(state) {
             let ticketLost = state.tickets[0]
             if(!ticketLost) return
@@ -182,8 +189,6 @@ export default {
             state.tickets.shift()
             // Restart timer
             state.newStartTime = Date.now() / 1000
-            /* state.tickets = state.tickets
-                .filter(ticket => ticket.name !== ticketLost.name); */
         },
 
         m_set_last_time(state, t) {

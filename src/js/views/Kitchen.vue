@@ -26,12 +26,20 @@
         </div>
 
         <div class="hitw_main-board col-lg-8 offset-lg-4">
-            <h2 class="h6 mt-3">
-                Money:
-                <span :class="money >= 0 ? 'badge badge-success' : 'badge badge-danger'">
-                    ${{ money.toFixed(2) }}
-                </span>
-            </h2>
+            <ul class="list-group list-group-horizontal mt-3">
+                <li class="list-group-item">
+                    Money:
+                    <span :class="money >= 0 ? 'badge badge-success' : 'badge badge-danger'">
+                        ${{ money.toFixed(2) }}
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    {{ formattedMinInDay }} m
+                    {{ formattedSecInDay }} s
+                    left in day
+                </li>
+                <li class="list-group-item">Morbi leo risus</li>
+            </ul>
 
             <div class="card mt-3">
                 <div class="card-body">
@@ -87,24 +95,57 @@ export default {
             if(true === newVal && false === oldVal) {
                 setTimeout(function commitLoss(t) {
                     // check "delta time"
-                    if(Date.now() - t >= 3000) {
+                    if(Date.now() - t >= 2000) {
                         this.$store.commit('m_ticket_lose_first')
                     } else {
-                        setTimeout(commitLoss, 300, Date.now())
+                        setTimeout(commitLoss.bind(this), 300, Date.now())
                     }
                 }.bind(this), 3000, Date.now())
             }
-        }
+        },
+
+        secondsLeftInDay(newVal, oldVal) {
+            if(newVal < 0 && oldVal > 0) {
+                setTimeout(function initEndOfDay(t) {
+                    // check "delta time"
+                    if(Date.now() - t >= 2000) {
+                        this.$router.push('/')
+                    } else {
+                        setTimeout(initEndOfDay.bind(this), 300, Date.now())
+                    }
+                }.bind(this), 3000, Date.now())
+            }
+        },
     },
 
     computed: {
+        formattedMinInDay() {
+            let val = Math.floor(this.secondsLeftInDay / 60)
+            return val > 0 ? val : 0
+        },
+
+        formattedSecInDay() {
+            let val = Math.floor(this.secondsLeftInDay % 60)
+            return val > 0 ? val : 0
+        },
+
         ...mapState([
             'ingredients','tickets','items','actions','cookingMethods','money',
-            'lastTime','deltaTime','timeUp'
+            'lastTime','deltaTime','timeUp','secondsLeftInDay'
         ]),
         ...mapGetters([
             'possibleItems'
         ]),
+    },
+
+    created() {
+        setTimeout(function reduceSecondsLeftInDay(t) {
+            // "delta time"
+            let dt = Date.now() - t
+            //this.secondsLeftInDay -= (dt / 1000)
+            this.$store.commit('m_reduce_seconds_left_in_day', dt / 1000)
+            setTimeout(reduceSecondsLeftInDay.bind(this), 300, Date.now())
+        }.bind(this), 300, Date.now())
     },
 
     components: { ImgButton, Ticket, Item, Timer }
