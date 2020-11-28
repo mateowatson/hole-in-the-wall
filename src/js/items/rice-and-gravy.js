@@ -1,20 +1,21 @@
 export default {
-    name: 'Hamburger Steak',
-    plural: 'Hamburger Steaks',
+    name: 'Rice and Gravy',
+    plural: 'Rice and Gravys',
     image: '',
     amount: 0,
-    cost: 3,
-    price: 9,
+    cost: 4,
+    price: 8,
     reqs: {
         ingredients: [
-            { name: 'Ground Beef', amount: 1 },
             { name: 'Flour', amount: 1 },
+            { name: 'Rice', amount: 1 },
             { name: 'Onions', amount: 1 },
         ],
         actions: [
             { name: 'Chop', amount: 1 },
         ],
         cookingMethods: [
+            { name: 'Boil', amount: 1 },
             { name: 'Sautee', amount: 1 },
         ]
     }

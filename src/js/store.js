@@ -19,6 +19,20 @@ import deluxeBaconCheeseBurger from './items/deluxe-bacon-cheeseburger'
 import cheeseburger from './items/cheeseburger'
 import greenBeanCassarole from './items/green-bean-cassarole'
 import friedChickenSandwich from './items/fried-chicken-sandwich'
+import houseSalad from './items/house-salad'
+import cobbSalad from './items/cobb-salad'
+import friedChickenSalad from './items/fried-chicken-salad'
+import scrambledEggs from './items/scrambled-eggs'
+import chilli from './items/chilli'
+import chilliCheeseFries from './items/chilli-cheese-fries'
+import redBeansAndRice from './items/red-beans-and-rice'
+import bakedBeans from './items/baked-beans'
+import englishBreakfast from './items/english-breakfast'
+import chickenAndRice from './items/chicken-and-rice'
+import riceAndGravy from './items/rice-and-gravy'
+import biscuitsAndGravy from './items/biscuits-and-gravy'
+import stirFry from './items/stir-fry'
+import toast from './items/toast'
 
 export default {
     state: {
@@ -52,6 +66,11 @@ export default {
             { name: 'Bacon', image: 'images/bacon.png', amount: 0, },
             { name: 'Cream of Mushroom', image: 'images/cream-of-mushroom.png', amount: 0, },
             { name: 'Onions', image: 'images/onions.png', amount: 0, },
+            { name: 'Bleu Cheese', image: 'images/bleu-cheese.png', amount: 0, },
+            { name: 'Beans', image: 'images/beans.png', amount: 0, },
+            { name: 'Rice', image: 'images/rice.png', amount: 0, },
+            { name: 'Sausage', image: 'images/sausage.png', amount: 0, },
+            { name: 'Cajun Seasoning', image: 'images/cajun-seasoning.png', amount: 0, },
         ],
 
         actions: [
@@ -72,6 +91,7 @@ export default {
             { name: 'Boil', image: 'images/boil.png', amount: 0, },
             { name: 'Sautee', image: 'images/sautee.png', amount: 0, },
             { name: 'Fry', image: 'images/fry.png', amount: 0, },
+            { name: 'Slow Cook', image: 'images/slow-cook.png', amount: 0, },
         ],
 
         items: [
@@ -96,6 +116,20 @@ export default {
             { ...cheeseburger },
             { ...greenBeanCassarole },
             { ...friedChickenSandwich },
+            { ...houseSalad },
+            { ...cobbSalad },
+            { ...friedChickenSalad },
+            { ...scrambledEggs },
+            { ...chilli },
+            { ...chilliCheeseFries },
+            { ...redBeansAndRice },
+            { ...englishBreakfast },
+            { ...bakedBeans },
+            { ...chickenAndRice },
+            { ...riceAndGravy },
+            { ...biscuitsAndGravy },
+            { ...stirFry },
+            { ...toast },
         ],
 
         tickets: [
