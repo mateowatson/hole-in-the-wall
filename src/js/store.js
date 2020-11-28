@@ -31,6 +31,41 @@ export default {
                 image: '',
                 amount: 0,
             },
+            {
+                name: 'Corn',
+                image: '',
+                amount: 0,
+            },
+            {
+                name: 'Green Beans',
+                image: '',
+                amount: 0,
+            },
+            {
+                name: 'Bell Peppers',
+                image: '',
+                amount: 0,
+            },
+            {
+                name: 'Potatoes',
+                image: '',
+                amount: 0,
+            },
+            {
+                name: 'Milk',
+                image: '',
+                amount: 0,
+            },
+            {
+                name: 'Flour',
+                image: '',
+                amount: 0,
+            },
+            {
+                name: 'Egg',
+                image: '',
+                amount: 0,
+            },
         ],
 
         actions: [
@@ -44,6 +79,21 @@ export default {
                 image: '',
                 amount: 0,
             },
+            {
+                name: 'Mash',
+                image: '',
+                amount: 0,
+            },
+            {
+                name: 'Chop',
+                image: '',
+                amount: 0,
+            },
+            {
+                name: 'Batter',
+                image: '',
+                amount: 0,
+            },
         ],
 
         cookingMethods: [
@@ -54,6 +104,21 @@ export default {
             },
             {
                 name: 'Bake',
+                image: '',
+                amount: 0,
+            },
+            {
+                name: 'Boil',
+                image: '',
+                amount: 0,
+            },
+            {
+                name: 'Sautee',
+                image: '',
+                amount: 0,
+            },
+            {
+                name: 'Fry',
                 image: '',
                 amount: 0,
             },
@@ -101,6 +166,97 @@ export default {
                     ],
                     cookingMethods: [
                         { name: 'Bake', amount: 1 },
+                    ]
+                }
+            },
+            {
+                name: 'Shepherds Pie',
+                plural: 'Shepherds Pies',
+                image: '',
+                amount: 0,
+                cost: 4,
+                price: 10,
+                reqs: {
+                    ingredients: [
+                        { name: 'Ground Beef', amount: 1 },
+                        { name: 'Corn', amount: 1 },
+                        { name: 'Green Beans', amount: 1 },
+                        { name: 'Bell Peppers', amount: 1 },
+                        { name: 'Potatoes', amount: 1 },
+                    ],
+                    actions: [
+                        { name: 'Mix', amount: 1 },
+                        { name: 'Mash', amount: 1 },
+                    ],
+                    cookingMethods: [
+                        { name: 'Boil', amount: 1 },
+                        { name: 'Sautee', amount: 1 },
+                    ]
+                }
+            },
+            {
+                name: 'Sloppy Joe',
+                plural: 'Sloppy Joes',
+                image: '',
+                amount: 0,
+                cost: 3,
+                price: 9,
+                reqs: {
+                    ingredients: [
+                        { name: 'Ground Beef', amount: 1 },
+                        { name: 'Ketchup', amount: 1 },
+                        { name: 'Bun', amount: 1 },
+                    ],
+                    actions: [
+                        { name: 'Mix', amount: 1 },
+                    ],
+                    cookingMethods: [
+                        { name: 'Sautee', amount: 1 },
+                    ]
+                }
+            },
+            {
+                name: 'Hamburger Steak',
+                plural: 'Hamburger Steaks',
+                image: '',
+                amount: 0,
+                cost: 3,
+                price: 9,
+                reqs: {
+                    ingredients: [
+                        { name: 'Ground Beef', amount: 1 },
+                        { name: 'Flour', amount: 1 },
+                        { name: 'Onions', amount: 1 },
+                    ],
+                    actions: [
+                        { name: 'Chop', amount: 1 },
+                    ],
+                    cookingMethods: [
+                        { name: 'Sautee', amount: 1 },
+                        { name: 'Carmelize', amount: 1 },
+                    ]
+                }
+            },
+            {
+                name: 'Fried Chicken 2pc',
+                plural: 'Fried Chicken 2pc',
+                image: '',
+                amount: 0,
+                cost: 3,
+                price: 9,
+                reqs: {
+                    ingredients: [
+                        { name: 'Chicken', amount: 1 },
+                        { name: 'Flour', amount: 1 },
+                        { name: 'Milk', amount: 1 },
+                        { name: 'Egg', amount: 1 },
+                    ],
+                    actions: [
+                        { name: 'Chop', amount: 1 },
+                        { name: 'Batter', amount: 1 },
+                    ],
+                    cookingMethods: [
+                        { name: 'Fry', amount: 1 },
                     ]
                 }
             },
