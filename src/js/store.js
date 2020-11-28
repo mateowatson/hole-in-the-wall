@@ -13,6 +13,12 @@ import blt from './items/blt'
 import breakfastPlatterWBacon from './items/breakfast-platter-w-bacon'
 import cornNuggets from './items/corn-nuggets'
 import soulFoodPlatter from './items/soul-food-platter'
+import bakedPotato from './items/baked-potato'
+import tomatoSandwich from './items/tomato-sandwich'
+import deluxeBaconCheeseBurger from './items/deluxe-bacon-cheeseburger'
+import cheeseburger from './items/cheeseburger'
+import greenBeanCassarole from './items/green-bean-cassarole'
+import friedChickenSandwich from './items/fried-chicken-sandwich'
 
 export default {
     state: {
@@ -44,6 +50,8 @@ export default {
             { name: 'Lettuce', image: 'images/lettuce.png', amount: 0, },
             { name: 'Tomatoes', image: 'images/tomatoes.png', amount: 0, },
             { name: 'Bacon', image: 'images/bacon.png', amount: 0, },
+            { name: 'Cream of Mushroom', image: 'images/cream-of-mushroom.png', amount: 0, },
+            { name: 'Onions', image: 'images/onions.png', amount: 0, },
         ],
 
         actions: [
@@ -82,6 +90,12 @@ export default {
             { ...breakfastPlatterWBacon },
             { ...cornNuggets },
             { ...soulFoodPlatter },
+            { ...bakedPotato },
+            { ...tomatoSandwich },
+            { ...deluxeBaconCheeseBurger },
+            { ...cheeseburger },
+            { ...greenBeanCassarole },
+            { ...friedChickenSandwich },
         ],
 
         tickets: [
