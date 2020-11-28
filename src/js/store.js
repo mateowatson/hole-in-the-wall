@@ -1,3 +1,10 @@
+import burger from './items/001-burger'
+import meatloaf from './items/002-meatloaf'
+import shepherdsPie from './items/003-shepherds-pie'
+import sloppyJoe from './items/004-sloppy-joe'
+import hamburgerSteak from './items/005-hamburger-steak'
+import friedChicken2pc from './items/006-fried-chicken-2pc'
+
 export default {
     state: {
         timeUp: false,
@@ -11,255 +18,42 @@ export default {
         money: 300.00,
 
         ingredients: [
-            {
-                name: 'Ground Beef',
-                image: 'images/ground-beef.png',
-                amount: 0,
-            },
-            {
-                name: 'Bun',
-                image: 'images/bun.png',
-                amount: 0,
-            },
-            {
-                name: 'Bread',
-                image: '',
-                amount: 0,
-            },
-            {
-                name: 'Ketchup',
-                image: '',
-                amount: 0,
-            },
-            {
-                name: 'Corn',
-                image: '',
-                amount: 0,
-            },
-            {
-                name: 'Green Beans',
-                image: '',
-                amount: 0,
-            },
-            {
-                name: 'Bell Peppers',
-                image: '',
-                amount: 0,
-            },
-            {
-                name: 'Potatoes',
-                image: '',
-                amount: 0,
-            },
-            {
-                name: 'Milk',
-                image: '',
-                amount: 0,
-            },
-            {
-                name: 'Flour',
-                image: '',
-                amount: 0,
-            },
-            {
-                name: 'Egg',
-                image: '',
-                amount: 0,
-            },
+            { name: 'Ground Beef', image: 'images/ground-beef.png', amount: 0, },
+            { name: 'Bun', image: 'images/bun.png', amount: 0, },
+            { name: 'Bread', image: 'images/bread.png', amount: 0, },
+            { name: 'Ketchup', image: 'images/ketchup.png', amount: 0, },
+            { name: 'Corn', image: 'images/corn.png', amount: 0, },
+            { name: 'Green Beans', image: 'images/green-beans.png', amount: 0, },
+            { name: 'Bell Peppers', image: 'images/bell-peppers.png', amount: 0, },
+            { name: 'Potatoes', image: 'images/potatoes.png', amount: 0, },
+            { name: 'Milk', image: 'images/milk.png', amount: 0, },
+            { name: 'Flour', image: 'images/flour.png', amount: 0, },
+            { name: 'Egg', image: 'images/egg.png', amount: 0, },
         ],
 
         actions: [
-            {
-                name: 'Make Patty',
-                image: '',
-                amount: 0,
-            },
-            {
-                name: 'Mix',
-                image: '',
-                amount: 0,
-            },
-            {
-                name: 'Mash',
-                image: '',
-                amount: 0,
-            },
-            {
-                name: 'Chop',
-                image: '',
-                amount: 0,
-            },
-            {
-                name: 'Batter',
-                image: '',
-                amount: 0,
-            },
+            { name: 'Make Patty', image: 'images/make-patty.png', amount: 0, },
+            { name: 'Mix', image: 'images/mix.png', amount: 0, },
+            { name: 'Mash', image: 'images/mash.png', amount: 0, },
+            { name: 'Chop', image: 'images/chop.png', amount: 0, },
+            { name: 'Batter', image: 'images/batter.png', amount: 0, },
         ],
 
         cookingMethods: [
-            {
-                name: 'Grill',
-                image: '',
-                amount: 0,
-            },
-            {
-                name: 'Bake',
-                image: '',
-                amount: 0,
-            },
-            {
-                name: 'Boil',
-                image: '',
-                amount: 0,
-            },
-            {
-                name: 'Sautee',
-                image: '',
-                amount: 0,
-            },
-            {
-                name: 'Fry',
-                image: '',
-                amount: 0,
-            },
+            { name: 'Grill', image: 'images/grill.png', amount: 0, },
+            { name: 'Bake', image: 'images/bake.png', amount: 0, },
+            { name: 'Boil', image: 'images/boil.png', amount: 0, },
+            { name: 'Sautee', image: 'images/sautee.png', amount: 0, },
+            { name: 'Fry', image: 'images/fry.png', amount: 0, },
         ],
 
         items: [
-            {
-                name: 'Burger',
-                plural: 'Burgers',
-                image: 'images/burger.png',
-                amount: 0,
-                cost: 2,
-                price: 8,
-                reqs: {
-                    ingredients: [
-                        { name: 'Ground Beef', amount: 1 },
-                        { name: 'Bun', amount: 1 },
-                    ],
-                    actions: [
-                        { name: 'Make Patty', amount: 1 },
-                    ],
-                    cookingMethods: [
-                        { name: 'Grill', amount: 1 },
-                    ]
-                },
-                postIngredients: [
-                    'Ketchup', 'Cheese'
-                ]
-            },
-            {
-                name: 'Meatloaf',
-                plural: 'Meatloafs',
-                image: '',
-                amount: 0,
-                cost: 4,
-                price: 10,
-                reqs: {
-                    ingredients: [
-                        { name: 'Ground Beef', amount: 1 },
-                        { name: 'Bread', amount: 1 },
-                        { name: 'Ketchup', amount: 1 },
-                    ],
-                    actions: [
-                        { name: 'Mix', amount: 1 },
-                    ],
-                    cookingMethods: [
-                        { name: 'Bake', amount: 1 },
-                    ]
-                }
-            },
-            {
-                name: 'Shepherds Pie',
-                plural: 'Shepherds Pies',
-                image: '',
-                amount: 0,
-                cost: 4,
-                price: 10,
-                reqs: {
-                    ingredients: [
-                        { name: 'Ground Beef', amount: 1 },
-                        { name: 'Corn', amount: 1 },
-                        { name: 'Green Beans', amount: 1 },
-                        { name: 'Bell Peppers', amount: 1 },
-                        { name: 'Potatoes', amount: 1 },
-                    ],
-                    actions: [
-                        { name: 'Mix', amount: 1 },
-                        { name: 'Mash', amount: 1 },
-                    ],
-                    cookingMethods: [
-                        { name: 'Boil', amount: 1 },
-                        { name: 'Sautee', amount: 1 },
-                    ]
-                }
-            },
-            {
-                name: 'Sloppy Joe',
-                plural: 'Sloppy Joes',
-                image: '',
-                amount: 0,
-                cost: 3,
-                price: 9,
-                reqs: {
-                    ingredients: [
-                        { name: 'Ground Beef', amount: 1 },
-                        { name: 'Ketchup', amount: 1 },
-                        { name: 'Bun', amount: 1 },
-                    ],
-                    actions: [
-                        { name: 'Mix', amount: 1 },
-                    ],
-                    cookingMethods: [
-                        { name: 'Sautee', amount: 1 },
-                    ]
-                }
-            },
-            {
-                name: 'Hamburger Steak',
-                plural: 'Hamburger Steaks',
-                image: '',
-                amount: 0,
-                cost: 3,
-                price: 9,
-                reqs: {
-                    ingredients: [
-                        { name: 'Ground Beef', amount: 1 },
-                        { name: 'Flour', amount: 1 },
-                        { name: 'Onions', amount: 1 },
-                    ],
-                    actions: [
-                        { name: 'Chop', amount: 1 },
-                    ],
-                    cookingMethods: [
-                        { name: 'Sautee', amount: 1 },
-                        { name: 'Carmelize', amount: 1 },
-                    ]
-                }
-            },
-            {
-                name: 'Fried Chicken 2pc',
-                plural: 'Fried Chicken 2pc',
-                image: '',
-                amount: 0,
-                cost: 3,
-                price: 9,
-                reqs: {
-                    ingredients: [
-                        { name: 'Chicken', amount: 1 },
-                        { name: 'Flour', amount: 1 },
-                        { name: 'Milk', amount: 1 },
-                        { name: 'Egg', amount: 1 },
-                    ],
-                    actions: [
-                        { name: 'Chop', amount: 1 },
-                        { name: 'Batter', amount: 1 },
-                    ],
-                    cookingMethods: [
-                        { name: 'Fry', amount: 1 },
-                    ]
-                }
-            },
+            { ...burger },
+            { ...meatloaf },
+            { ...shepherdsPie },
+            { ...sloppyJoe },
+            { ...hamburgerSteak },
+            { ...friedChicken2pc },
         ],
 
         tickets: [
