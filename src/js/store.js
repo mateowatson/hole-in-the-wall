@@ -1,9 +1,18 @@
-import burger from './items/001-burger'
-import meatloaf from './items/002-meatloaf'
-import shepherdsPie from './items/003-shepherds-pie'
-import sloppyJoe from './items/004-sloppy-joe'
-import hamburgerSteak from './items/005-hamburger-steak'
-import friedChicken2pc from './items/006-fried-chicken-2pc'
+import burger from './items/burger'
+import meatloaf from './items/meatloaf'
+import shepherdsPie from './items/shepherds-pie'
+import sloppyJoe from './items/sloppy-joe'
+import hamburgerSteak from './items/hamburger-steak'
+import friedChicken2pc from './items/fried-chicken-2pc'
+import omelet from './items/omelet'
+import chickenSalad from './items/chicken-salad'
+import chickenSaladSandwich from './items/chicken-salad-sandwich'
+import frenchFries from './items/french-fries'
+import grilledCheeseSandwich from './items/grilled-cheese-sandwich'
+import blt from './items/blt'
+import breakfastPlatterWBacon from './items/breakfast-platter-w-bacon'
+import cornNuggets from './items/corn-nuggets'
+import soulFoodPlatter from './items/soul-food-platter'
 
 export default {
     state: {
@@ -19,6 +28,7 @@ export default {
 
         ingredients: [
             { name: 'Ground Beef', image: 'images/ground-beef.png', amount: 0, },
+            { name: 'Chicken', image: 'images/cheddar-cheese.png', amount: 0, },
             { name: 'Bun', image: 'images/bun.png', amount: 0, },
             { name: 'Bread', image: 'images/bread.png', amount: 0, },
             { name: 'Ketchup', image: 'images/ketchup.png', amount: 0, },
@@ -29,6 +39,11 @@ export default {
             { name: 'Milk', image: 'images/milk.png', amount: 0, },
             { name: 'Flour', image: 'images/flour.png', amount: 0, },
             { name: 'Egg', image: 'images/egg.png', amount: 0, },
+            { name: 'Cheddar Cheese', image: 'images/cheddar-cheese.png', amount: 0, },
+            { name: 'Mayo', image: 'images/mayo.png', amount: 0, },
+            { name: 'Lettuce', image: 'images/lettuce.png', amount: 0, },
+            { name: 'Tomatoes', image: 'images/tomatoes.png', amount: 0, },
+            { name: 'Bacon', image: 'images/bacon.png', amount: 0, },
         ],
 
         actions: [
@@ -37,6 +52,10 @@ export default {
             { name: 'Mash', image: 'images/mash.png', amount: 0, },
             { name: 'Chop', image: 'images/chop.png', amount: 0, },
             { name: 'Batter', image: 'images/batter.png', amount: 0, },
+            { name: 'Blend', image: 'images/blend.png', amount: 0, },
+            { name: 'Slice', image: 'images/slice.png', amount: 0, },
+            { name: 'Stir', image: 'images/stir.png', amount: 0, },
+            { name: 'Roll Dough', image: 'images/roll-dough.png', amount: 0, },
         ],
 
         cookingMethods: [
@@ -54,6 +73,15 @@ export default {
             { ...sloppyJoe },
             { ...hamburgerSteak },
             { ...friedChicken2pc },
+            { ...omelet },
+            { ...chickenSalad },
+            { ...chickenSaladSandwich },
+            { ...frenchFries },
+            { ...grilledCheeseSandwich },
+            { ...blt },
+            { ...breakfastPlatterWBacon },
+            { ...cornNuggets },
+            { ...soulFoodPlatter },
         ],
 
         tickets: [
