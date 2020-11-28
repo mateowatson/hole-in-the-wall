@@ -4,7 +4,8 @@
         <div class="hitw_tickets col-lg-2 p-0 bg-dark text-light">
             <h2 class="h5 p-3">Tickets</h2>
             <div class="pl-3 pr-3 pb-3">
-                <Timer />
+                <Timer v-if="tickets.length"
+                    :seconds-allotted="tickets[0] ? tickets[0].secondsAllotted : 0" />
             </div>
             <Ticket v-for="(ticket, idx) in tickets" :key="idx+'tick'" :ticket="ticket" />
         </div>
@@ -19,7 +20,7 @@
             <h2 class="h5 pt-3">Items</h2>
 
             <ul class="list-unstyled">
-                <ItemImgButton v-for="(item, idx) in items" :key="idx+'item-amt'"
+                <Item v-for="(item, idx) in items" :key="idx+'item-amt'"
                     :thing="item" :type="'items'" />
             </ul>
         </div>
@@ -76,24 +77,36 @@
 import { mapState, mapGetters } from 'vuex'
 import ImgButton from './partials/components/ImgButton'
 import Ticket from './partials/components/Ticket'
-import ItemImgButton from './partials/components/ItemImgButton'
+import Item from './partials/components/Item'
 import Timer from './partials/components/Timer'
 
 export default {
+    watch: {
+        // Mercifully allow 3 seconds more after timeup
+        timeUp(newVal, oldVal) {
+            if(true === newVal && false === oldVal) {
+                setTimeout(function commitLoss(t) {
+                    // check "delta time"
+                    if(Date.now() - t >= 3000) {
+                        this.$store.commit('m_ticket_lose_first')
+                    } else {
+                        setTimeout(commitLoss, 300, Date.now())
+                    }
+                }.bind(this), 3000, Date.now())
+            }
+        }
+    },
+
     computed: {
         ...mapState([
             'ingredients','tickets','items','actions','cookingMethods','money',
-            'lastTime','deltaTime'
+            'lastTime','deltaTime','timeUp'
         ]),
         ...mapGetters([
             'possibleItems'
         ]),
     },
 
-    created() {
-
-    },
-
-    components: { ImgButton, Ticket, ItemImgButton, Timer }
+    components: { ImgButton, Ticket, Item, Timer }
 }
 </script>

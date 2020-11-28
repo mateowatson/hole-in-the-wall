@@ -9,10 +9,8 @@
                         +${{ ticketPrice }}
                     </span>
                     <ul class="m-0 pl-3">
-                        <li v-for="(item, idx) in ticket.items" :key="idx+'item'">
-                            {{ item.qty }}
-                            {{ item.name }}
-                        </li>
+                        <TicketItem v-for="(ticketItem, idx) in ticket.items"
+                            :key="idx+'ticketitem'" :ticket-item="ticketItem" />
                     </ul>
                 </div>
             </div>
@@ -30,6 +28,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+import TicketItem from './TicketItem'
 
 export default {
     props: ['ticket'],
@@ -67,6 +66,8 @@ export default {
             this.$store.commit('m_ticket_fulfill', {...this.ticket})
         },
     },
+
+    components: { TicketItem },
 }
 </script>
 

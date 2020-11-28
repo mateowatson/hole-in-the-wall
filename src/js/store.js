@@ -1,5 +1,9 @@
 export default {
     state: {
+        timeUp: false,
+
+        newStartTime: 0,
+
         lastTime: 0,
 
         deltaTime: 0,
@@ -59,7 +63,7 @@ export default {
             {
                 name: 'Burger',
                 plural: 'Burgers',
-                image: '',
+                image: 'images/burger.png',
                 amount: 0,
                 cost: 2,
                 price: 8,
@@ -109,7 +113,7 @@ export default {
                     { name: 'Burger', qty: 1 },
                 ],
                 timeCreated: '20201126223810',
-                secondsAlloted: 15,
+                secondsAllotted: 15,
             },
             {
                 name: '20201126085728',
@@ -118,7 +122,7 @@ export default {
                     { name: 'Meatloaf', qty: 3 }
                 ],
                 timeCreated: '20201126223810',
-                secondsAlloted: 30,
+                secondsAllotted: 30,
             },
             {
                 name: '20201126105733',
@@ -127,7 +131,7 @@ export default {
                     { name: 'Meatloaf', qty: 2 }
                 ],
                 timeCreated: '20201126223810',
-                secondsAlloted: 45,
+                secondsAllotted: 45,
             }
         ],
 
@@ -140,6 +144,22 @@ export default {
 
 
     mutations: {
+        m_ticket_lose_first(state) {
+            let ticketLost = state.tickets[0]
+            if(!ticketLost) return
+            let moneyLost = ticketLost.items.reduce((acc, item) => {
+                let itemCost = 2 * item.qty
+                acc += itemCost
+                return acc
+            }, 0)
+            state.money -= moneyLost
+            state.tickets.shift()
+            // Restart timer
+            state.newStartTime = Date.now() / 1000
+            /* state.tickets = state.tickets
+                .filter(ticket => ticket.name !== ticketLost.name); */
+        },
+
         m_set_last_time(state, t) {
             state.lastTime = t
         },
@@ -169,6 +189,8 @@ export default {
                 return acc
             }, 0)
             state.money += ticketPrice
+            // Restart timer
+            state.newStartTime = Date.now() / 1000
         },
 
         m_thing_increment(state, thing) {
@@ -210,6 +232,10 @@ export default {
             if(!match) return
             if(0 === match.amount) return
             match.amount--
+        },
+
+        m_time_up(state, bool) {
+            state.timeUp = bool
         },
     },
 
