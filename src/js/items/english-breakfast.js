@@ -1,7 +1,7 @@
 export default {
     name: 'English Breakfast',
     plural: 'English Breakfasts',
-    image: '',
+    image: 'images/english-breakfast.png',
     amount: 0,
     cost: 8,
     price: 20,

@@ -1,7 +1,7 @@
 export default {
     name: 'Tomato Sandwich',
     plural: 'Tomato Sandwich',
-    image: '',
+    image: 'images/tomato-sandwich.png',
     amount: 0,
     cost: 2,
     price: 4,

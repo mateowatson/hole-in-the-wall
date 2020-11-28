@@ -1,7 +1,7 @@
 export default {
     name: 'Chilli Cheese Fries',
     plural: 'Chilli Cheese Fries',
-    image: '',
+    image: 'images/chilli-cheese-fries.png',
     amount: 0,
     cost: 6,
     price: 16,

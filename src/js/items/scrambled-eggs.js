@@ -1,7 +1,7 @@
 export default {
     name: 'Scrambled Eggs',
     plural: 'Scrambled Eggs',
-    image: '',
+    image: 'images/srambled-eggs.png',
     amount: 0,
     cost: 2,
     price: 4,

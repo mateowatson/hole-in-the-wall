@@ -1,7 +1,7 @@
 export default {
     name: 'Red Beans and Rice',
     plural: 'Red Beans and Rice',
-    image: '',
+    image: 'images/red-beans-and-rice.png',
     amount: 0,
     cost: 6,
     price: 20,

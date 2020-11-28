@@ -1,7 +1,7 @@
 export default {
     name: 'BLT',
     plural: 'BLTs',
-    image: '',
+    image: 'images/blt.png',
     amount: 0,
     cost: 5,
     price: 10,

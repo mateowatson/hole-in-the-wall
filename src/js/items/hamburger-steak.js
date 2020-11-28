@@ -1,7 +1,7 @@
 export default {
     name: 'Hamburger Steak',
     plural: 'Hamburger Steaks',
-    image: '',
+    image: 'images/hamburger-steak.png',
     amount: 0,
     cost: 3,
     price: 9,

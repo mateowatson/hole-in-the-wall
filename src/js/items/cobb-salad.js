@@ -1,7 +1,7 @@
 export default {
     name: 'Cobb Salad',
     plural: 'Cobb Salads',
-    image: '',
+    image: 'images/cobb-salad.png',
     amount: 0,
     cost: 3,
     price: 8,

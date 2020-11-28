@@ -1,7 +1,7 @@
 export default {
     name: 'Shepherds Pie',
     plural: 'Shepherds Pies',
-    image: '',
+    image: 'images/shepherds-pie.png',
     amount: 0,
     cost: 4,
     price: 10,

@@ -1,7 +1,7 @@
 export default {
     name: 'Fried Chicken Sandwich',
     plural: 'Fried Chicken Sandwiches',
-    image: '',
+    image: 'images/fried-chicken-sandwich.png',
     amount: 0,
     cost: 4,
     price: 10,

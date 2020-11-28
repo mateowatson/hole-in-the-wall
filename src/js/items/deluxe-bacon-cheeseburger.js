@@ -1,7 +1,7 @@
 export default {
     name: 'Deluxe Bacon Cheeseburger',
     plural: 'Deluxe Bacon Cheeseburger',
-    image: '',
+    image: 'images/deluxe-bacon-cheeseburger.png',
     amount: 0,
     cost: 6,
     price: 13,

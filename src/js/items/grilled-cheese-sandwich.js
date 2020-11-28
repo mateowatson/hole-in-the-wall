@@ -1,7 +1,7 @@
 export default {
     name: 'Grilled Cheese Sandwich',
     plural: 'Grilled Cheese Sandwiches',
-    image: '',
+    image: 'images/grilled-cheese-sandwich.png',
     amount: 0,
     cost: 1,
     price: 3,

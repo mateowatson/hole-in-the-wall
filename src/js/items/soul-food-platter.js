@@ -1,7 +1,7 @@
 export default {
     name: 'Soul Food Platter',
     plural: 'Soul Food Platters',
-    image: '',
+    image: 'images/soul-food-platter.png',
     amount: 0,
     cost: 8,
     price: 18,

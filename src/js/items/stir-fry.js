@@ -1,7 +1,7 @@
 export default {
     name: 'Stir Fry',
     plural: 'Stir Frys',
-    image: '',
+    image: 'images/stir-fry.png',
     amount: 0,
     cost: 5,
     price: 11,

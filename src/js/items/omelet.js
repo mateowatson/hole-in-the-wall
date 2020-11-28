@@ -1,7 +1,7 @@
 export default {
     name: 'Omelet',
     plural: 'Omelets',
-    image: '',
+    image: 'images/omelet.png',
     amount: 0,
     cost: 1,
     price: 5,

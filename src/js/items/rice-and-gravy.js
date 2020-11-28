@@ -1,7 +1,7 @@
 export default {
     name: 'Rice and Gravy',
     plural: 'Rice and Gravys',
-    image: '',
+    image: 'images/rice-and-gravy.png',
     amount: 0,
     cost: 4,
     price: 8,

@@ -1,7 +1,7 @@
 export default {
     name: 'Corn Nuggets',
     plural: 'Corn Nuggets',
-    image: '',
+    image: 'images/corn-nuggets.png',
     amount: 0,
     cost: 3,
     price: 6,

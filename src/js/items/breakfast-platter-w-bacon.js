@@ -1,7 +1,7 @@
 export default {
     name: 'Breakfast Platter w/ Bacon',
     plural: 'Breakfast Platters w/ Bacon',
-    image: '',
+    image: 'images/breakfast-platter-w-bacon.png',
     amount: 0,
     cost: 6,
     price: 13,

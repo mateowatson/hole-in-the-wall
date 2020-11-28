@@ -1,7 +1,7 @@
 export default {
     name: 'Meatloaf',
     plural: 'Meatloafs',
-    image: '',
+    image: 'images/meatloaf.png',
     amount: 0,
     cost: 4,
     price: 10,

@@ -1,7 +1,7 @@
 export default {
     name: 'Sloppy Joe',
     plural: 'Sloppy Joes',
-    image: '',
+    image: 'images/sloppy-joe.png',
     amount: 0,
     cost: 3,
     price: 9,

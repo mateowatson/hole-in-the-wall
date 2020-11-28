@@ -1,7 +1,7 @@
 export default {
     name: 'Baked Potato',
     plural: 'Baked Potatoes',
-    image: '',
+    image: 'images/baked-potato.png',
     amount: 0,
     cost: 1,
     price: 3,

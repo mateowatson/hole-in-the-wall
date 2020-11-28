@@ -1,7 +1,7 @@
 export default {
     name: 'Chilli',
     plural: 'Chillis',
-    image: '',
+    image: 'images/chilli.png',
     amount: 0,
     cost: 5,
     price: 12,

@@ -1,7 +1,7 @@
 export default {
     name: 'Baked Beans',
     plural: 'Baked Beans',
-    image: '',
+    image: 'images/baked-beans.png',
     amount: 0,
     cost: 8,
     price: 20,

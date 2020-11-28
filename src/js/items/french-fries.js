@@ -1,7 +1,7 @@
 export default {
     name: 'French Fries',
     plural: 'French Fries',
-    image: '',
+    image: 'images/french-fries.png',
     amount: 0,
     cost: 1,
     price: 3,
