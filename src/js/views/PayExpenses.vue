@@ -14,19 +14,17 @@
                 </span>
             </p>
 
-            <p>
-                <button class="btn btn-primary">
-                    Pay Business Manager:
+            <p v-for="(expense, idx) in expenses" :key="idx+'expense'">
+                <button class="btn btn-primary" v-if="expense.due > 0"
+                    @click="payExpense(expense)">
+                    Pay {{ expense.name }}:
                     <span class="badge badge-danger">
-                        -$25
+                        -${{ expense.due }}
                     </span>
                 </button>
-            </p>
-
-            <p>
-                <button class="btn btn-primary disabled"
+                <button v-else class="btn btn-primary disabled"
                     style="pointer-events: none;">
-                    Pay Waiter:
+                    {{ expense.name }}:
                     <span class="badge badge-success">
                         All paid up!
                     </span>
@@ -49,9 +47,15 @@ import SiteContent from "./layouts/SiteContent";
 export default {
     components: { SiteNav, SiteFooter, SiteContent },
 
+    methods: {
+        payExpense(expense) {
+            this.$store.commit('m_pay_per_day_expense', expense)
+        },
+    },
+
     computed: {
         ...mapState([
-            'money',
+            'money','expenses'
         ]),
     },
 };

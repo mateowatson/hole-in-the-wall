@@ -115,7 +115,9 @@ export default {
                 setTimeout(function initEndOfDay(t) {
                     // check "delta time"
                     if(Date.now() - t >= 2000) {
-                        this.$router.push('/')
+                        this.$store.commit('m_tickets_clear')
+                        this.$store.commit('m_add_per_day_expenses')
+                        this.$router.push('/pay-expenses')
                     } else {
                         setTimeout(initEndOfDay.bind(this), 300, Date.now())
                     }

@@ -36,6 +36,7 @@ import toast from './items/toast'
 
 export default {
     state: {
+        secondsPerDay: 10,
         secondsLeftInDay: 10,
 
         // referring to current ticket
@@ -45,7 +46,18 @@ export default {
 
         money: 300.00,
 
-        needToPayEndOfDayFees: true,
+        expenses: [
+            {
+                name: 'Business Manager',
+                perDayCost: 50,
+                due: 0
+            },
+            {
+                name: 'Waiter',
+                perDayCost: 15,
+                due: 0
+            },
+        ],
 
         ingredients: [
             { name: 'Ground Beef', image: 'images/ground-beef.png', amount: 0, },
@@ -171,6 +183,24 @@ export default {
 
 
     mutations: {
+        m_add_per_day_expenses(state) {
+            state.expenses.forEach(expense => {
+                expense.due = expense.perDayCost
+            })
+        },
+
+        m_pay_per_day_expense(state, toPayExpense) {
+            state.expenses.forEach(expense => {
+                if(toPayExpense.name === expense.name) {
+                    state.money -= expense.due
+                    expense.due = 0
+                }
+            })
+
+            // reset day
+            state.secondsLeftInDay = state.secondsPerDay
+        },
+
         m_reduce_seconds_left_in_day(state, s) {
             state.secondsLeftInDay -= s
         },
@@ -196,6 +226,10 @@ export default {
 
         m_set_ticket_start_time(state, time) {
             state.ticketStartTime = time
+        },
+
+        m_tickets_clear(state) {
+            state.tickets = []
         },
 
         m_ticket_lose_first(state) {
