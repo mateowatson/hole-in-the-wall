@@ -17,7 +17,7 @@ import bakedPotato from './items/baked-potato'
 import tomatoSandwich from './items/tomato-sandwich'
 import deluxeBaconCheeseBurger from './items/deluxe-bacon-cheeseburger'
 import cheeseburger from './items/cheeseburger'
-import greenBeanCassarole from './items/green-bean-cassarole'
+import greenBeanCasserole from './items/green-bean-casserole'
 import friedChickenSandwich from './items/fried-chicken-sandwich'
 import houseSalad from './items/house-salad'
 import cobbSalad from './items/cobb-salad'
@@ -36,8 +36,8 @@ import toast from './items/toast'
 
 export default {
     state: {
-        secondsPerDay: 10,
-        secondsLeftInDay: 10,
+        secondsPerDay: 600,
+        secondsLeftInDay: 600,
 
         // referring to current ticket
         timeUp: false,
@@ -60,51 +60,51 @@ export default {
         ],
 
         ingredients: [
-            { name: 'Ground Beef', image: 'images/ground-beef.png', amount: 0, },
-            { name: 'Chicken', image: 'images/cheddar-cheese.png', amount: 0, },
-            { name: 'Bun', image: 'images/bun.png', amount: 0, },
-            { name: 'Bread', image: 'images/bread.png', amount: 0, },
-            { name: 'Ketchup', image: 'images/ketchup.png', amount: 0, },
-            { name: 'Corn', image: 'images/corn.png', amount: 0, },
-            { name: 'Green Beans', image: 'images/green-beans.png', amount: 0, },
-            { name: 'Bell Peppers', image: 'images/bell-peppers.png', amount: 0, },
-            { name: 'Potatoes', image: 'images/potatoes.png', amount: 0, },
-            { name: 'Milk', image: 'images/milk.png', amount: 0, },
-            { name: 'Flour', image: 'images/flour.png', amount: 0, },
-            { name: 'Egg', image: 'images/egg.png', amount: 0, },
-            { name: 'Cheddar Cheese', image: 'images/cheddar-cheese.png', amount: 0, },
-            { name: 'Mayo', image: 'images/mayo.png', amount: 0, },
-            { name: 'Lettuce', image: 'images/lettuce.png', amount: 0, },
-            { name: 'Tomatoes', image: 'images/tomatoes.png', amount: 0, },
-            { name: 'Bacon', image: 'images/bacon.png', amount: 0, },
-            { name: 'Cream of Mushroom', image: 'images/cream-of-mushroom.png', amount: 0, },
-            { name: 'Onions', image: 'images/onions.png', amount: 0, },
-            { name: 'Bleu Cheese', image: 'images/bleu-cheese.png', amount: 0, },
-            { name: 'Beans', image: 'images/beans.png', amount: 0, },
-            { name: 'Rice', image: 'images/rice.png', amount: 0, },
-            { name: 'Sausage', image: 'images/sausage.png', amount: 0, },
-            { name: 'Cajun Seasoning', image: 'images/cajun-seasoning.png', amount: 0, },
+            { name: 'Ground Beef', image: 'images/ground-beef.png', stocked: true,  amount: 0,},
+            { name: 'Chicken', image: 'images/cheddar-cheese.png', stocked: false, amount: 0, },
+            { name: 'Bun', image: 'images/bun.png', stocked: true,  amount: 0,},
+            { name: 'Bread', image: 'images/bread.png', stocked: false, amount: 0, },
+            { name: 'Ketchup', image: 'images/ketchup.png', stocked: false, amount: 0, },
+            { name: 'Corn', image: 'images/corn.png', stocked: false, amount: 0, },
+            { name: 'Green Beans', image: 'images/green-beans.png', stocked: false, amount: 0, },
+            { name: 'Bell Peppers', image: 'images/bell-peppers.png', stocked: false, amount: 0, },
+            { name: 'Potatoes', image: 'images/potatoes.png', stocked: true,  amount: 0,},
+            { name: 'Milk', image: 'images/milk.png', stocked: false, amount: 0, },
+            { name: 'Flour', image: 'images/flour.png', stocked: false, amount: 0, },
+            { name: 'Egg', image: 'images/egg.png', stocked: false, amount: 0, },
+            { name: 'Cheddar Cheese', image: 'images/cheddar-cheese.png', stocked: false, amount: 0, },
+            { name: 'Mayo', image: 'images/mayo.png', stocked: false, amount: 0, },
+            { name: 'Lettuce', image: 'images/lettuce.png', stocked: false, amount: 0, },
+            { name: 'Tomatoes', image: 'images/tomatoes.png', stocked: false, amount: 0, },
+            { name: 'Bacon', image: 'images/bacon.png', stocked: false, amount: 0, },
+            { name: 'Cream of Mushroom', image: 'images/cream-of-mushroom.png', stocked: false, amount: 0, },
+            { name: 'Onions', image: 'images/onions.png', stocked: false, amount: 0, },
+            { name: 'Bleu Cheese', image: 'images/bleu-cheese.png', stocked: false, amount: 0, },
+            { name: 'Beans', image: 'images/beans.png', stocked: false, amount: 0, },
+            { name: 'Rice', image: 'images/rice.png', stocked: false, amount: 0, },
+            { name: 'Sausage', image: 'images/sausage.png', stocked: false, amount: 0, },
+            { name: 'Cajun Seasoning', image: 'images/cajun-seasoning.png', stocked: false, amount: 0, },
         ],
 
         actions: [
-            { name: 'Make Patty', image: 'images/make-patty.png', amount: 0, },
-            { name: 'Mix', image: 'images/mix.png', amount: 0, },
-            { name: 'Mash', image: 'images/mash.png', amount: 0, },
-            { name: 'Chop', image: 'images/chop.png', amount: 0, },
-            { name: 'Batter', image: 'images/batter.png', amount: 0, },
-            { name: 'Blend', image: 'images/blend.png', amount: 0, },
-            { name: 'Slice', image: 'images/slice.png', amount: 0, },
-            { name: 'Stir', image: 'images/stir.png', amount: 0, },
-            { name: 'Roll Dough', image: 'images/roll-dough.png', amount: 0, },
+            { name: 'Make Patty', image: 'images/make-patty.png', stocked: true, amount: 0, },
+            { name: 'Mix', image: 'images/mix.png', stocked: false, amount: 0, },
+            { name: 'Mash', image: 'images/mash.png', stocked: false, amount: 0, },
+            { name: 'Chop', image: 'images/chop.png', stocked: true, amount: 0, },
+            { name: 'Batter', image: 'images/batter.png', stocked: false, amount: 0, },
+            { name: 'Blend', image: 'images/blend.png', stocked: false, amount: 0, },
+            { name: 'Slice', image: 'images/slice.png', stocked: false, amount: 0, },
+            { name: 'Stir', image: 'images/stir.png', stocked: false, amount: 0, },
+            { name: 'Roll Dough', image: 'images/roll-dough.png', stocked: false, amount: 0, },
         ],
 
         cookingMethods: [
-            { name: 'Grill', image: 'images/grill.png', amount: 0, },
-            { name: 'Bake', image: 'images/bake.png', amount: 0, },
-            { name: 'Boil', image: 'images/boil.png', amount: 0, },
-            { name: 'Sautee', image: 'images/sautee.png', amount: 0, },
-            { name: 'Fry', image: 'images/fry.png', amount: 0, },
-            { name: 'Slow Cook', image: 'images/slow-cook.png', amount: 0, },
+            { name: 'Grill', image: 'images/grill.png', stocked: true, amount: 0, },
+            { name: 'Bake', image: 'images/bake.png', stocked: false, amount: 0, },
+            { name: 'Boil', image: 'images/boil.png', stocked: false, amount: 0, },
+            { name: 'Sautee', image: 'images/sautee.png', stocked: false, amount: 0, },
+            { name: 'Fry', image: 'images/fry.png', stocked: true, amount: 0, },
+            { name: 'Slow Cook', image: 'images/slow-cook.png', stocked: false, amount: 0, },
         ],
 
         items: [
@@ -127,7 +127,7 @@ export default {
             { ...tomatoSandwich },
             { ...deluxeBaconCheeseBurger },
             { ...cheeseburger },
-            { ...greenBeanCassarole },
+            { ...greenBeanCasserole },
             { ...friedChickenSandwich },
             { ...houseSalad },
             { ...cobbSalad },
@@ -379,6 +379,48 @@ export default {
                     state.cookingMethods.forEach(cookingMethod => {
                         if(cookingMethod.name === requiredCookingMethod.name &&
                             requiredCookingMethod.amount > cookingMethod.amount) {
+                            matchesCookingMethods = false
+                        }
+                    })
+                })
+
+                if(matchesIngredients && matchesActions && matchesCookingMethods)
+                    possibleItems.push(item)
+            })
+
+            return possibleItems
+        },
+
+        itemsOffered: state => {
+            let possibleItems = []
+
+            state.items.forEach(item => {
+                let matchesIngredients = true
+                let matchesActions = true
+                let matchesCookingMethods = true
+
+                item.reqs.ingredients.forEach(requiredIngredient => {
+                    state.ingredients.forEach(ingredient => {
+                        if(ingredient.name === requiredIngredient.name &&
+                            ingredient.stocked) {
+                            matchesIngredients = false
+                        }
+                    })
+                })
+
+                item.reqs.actions.forEach(requiredAction => {
+                    state.actions.forEach(action => {
+                        if(action.name === requiredAction.name &&
+                            action.stocked) {
+                            matchesActions = false
+                        }
+                    })
+                })
+
+                item.reqs.cookingMethods.forEach(requiredCookingMethod => {
+                    state.cookingMethods.forEach(cookingMethod => {
+                        if(cookingMethod.name === requiredCookingMethod.name &&
+                            cookingMethod.stocked) {
                             matchesCookingMethods = false
                         }
                     })

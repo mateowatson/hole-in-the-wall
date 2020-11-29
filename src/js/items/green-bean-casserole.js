@@ -1,7 +1,7 @@
 export default {
-    name: 'Green Bean Cassarole',
-    plural: 'Green Bean Cassaroles',
-    image: 'images/green-bean-cassarole.png',
+    name: 'Green Bean Casserole',
+    plural: 'Green Bean Casseroles',
+    image: 'images/green-bean-casserole.png',
     amount: 0,
     cost: 4,
     price: 10,

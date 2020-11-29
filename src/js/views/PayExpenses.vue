@@ -1,9 +1,5 @@
 <template>
     <SiteContent>
-        <p class="my-5">
-            <router-link to="/" class="lead">Main Menu</router-link>
-        </p>
-
         <h1 class="text-center mt-5">Pay Expenses</h1>
 
         <div class="my-5">
@@ -31,21 +27,15 @@
                 </button>
             </p>
         </div>
-
-        <SiteNav />
-
-        <SiteFooter />
     </SiteContent>
 </template>
 
 <script>
 import { mapState } from "vuex"
-import SiteNav from "./partials/components/SiteNav";
-import SiteFooter from "./partials/components/SiteFooter";
 import SiteContent from "./layouts/SiteContent";
 
 export default {
-    components: { SiteNav, SiteFooter, SiteContent },
+    components: { SiteContent },
 
     methods: {
         payExpense(expense) {

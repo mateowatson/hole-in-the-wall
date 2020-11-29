@@ -1,7 +1,7 @@
 <template>
     <button class="d-inline-block btn btn-primary mx-1 my-2 position-relative"
         @mouseenter="showTooltip = true" @mouseleave="showTooltip = false"
-        @click="incrementAmount">
+        @click="incrementAmount" v-if="shouldDisplay">
         <img :src="thing.image" :alt="thing.name" class="position-relative">
         <transition name="hitw_tooltip-up">
             <Tooltip v-if="showTooltip">
@@ -23,11 +23,23 @@ import ButtonAmount from './ButtonAmount'
 
 export default {
     props: ['thing', 'type'],
+
     data() {
         return {
             showTooltip: false
         }
     },
+
+    computed: {
+        shouldDisplay() {
+            if(['ingredients','actions','cookingMethods']
+                .includes(this.type) && !this.thing.stocked) {
+                return false
+            }
+            return true
+        },
+    },
+
     methods: {
         incrementAmount() {
             this.$store.commit('m_thing_increment', {
@@ -36,6 +48,7 @@ export default {
             })
         },
     },
+
     components: { Tooltip, ButtonAmount }
 }
 </script>
