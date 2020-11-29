@@ -89,18 +89,24 @@ import Item from './partials/components/Item'
 import Timer from './partials/components/Timer'
 
 export default {
+    methods: {
+        initTimeUp() {
+            setTimeout(function commitLoss(t) {
+                // check "delta time"
+                if(Date.now() - t >= 2000) {
+                    this.$store.commit('m_ticket_lose_first')
+                } else {
+                    setTimeout(commitLoss.bind(this), 300, Date.now())
+                }
+            }.bind(this), 2000, Date.now())
+        }
+    },
+
     watch: {
         // Mercifully allow 3 seconds more after timeup
         timeUp(newVal, oldVal) {
             if(true === newVal && false === oldVal) {
-                setTimeout(function commitLoss(t) {
-                    // check "delta time"
-                    if(Date.now() - t >= 2000) {
-                        this.$store.commit('m_ticket_lose_first')
-                    } else {
-                        setTimeout(commitLoss.bind(this), 300, Date.now())
-                    }
-                }.bind(this), 3000, Date.now())
+                this.initTimeUp()
             }
         },
 
@@ -130,8 +136,8 @@ export default {
         },
 
         ...mapState([
-            'ingredients','tickets','items','actions','cookingMethods','money',
-            'lastTime','deltaTime','timeUp','secondsLeftInDay'
+            'ingredients','tickets','items','actions','cookingMethods','money','timeUp',
+            'secondsLeftInDay'
         ]),
         ...mapGetters([
             'possibleItems'
@@ -139,6 +145,10 @@ export default {
     },
 
     created() {
+        if(this.timeUp) {
+            this.initTimeUp()
+        }
+
         setTimeout(function reduceSecondsLeftInDay(t) {
             // "delta time"
             let dt = Date.now() - t
@@ -146,6 +156,22 @@ export default {
             this.$store.commit('m_reduce_seconds_left_in_day', dt / 1000)
             setTimeout(reduceSecondsLeftInDay.bind(this), 300, Date.now())
         }.bind(this), 300, Date.now())
+    },
+
+    beforeRouteEnter (to, from, next) {
+        if(to.name === 'Kitchen' && this.secondsLeftInDay <= 0) next({ name: from.name })
+        else next()
+    },
+
+    beforeRouteLeave (to, from, next) {
+        // clear all setTimeouts
+        var id = window.setTimeout(function() {}, 0);
+
+        while (id--) {
+            window.clearTimeout(id);
+        }
+
+        next()
     },
 
     components: { ImgButton, Ticket, Item, Timer }

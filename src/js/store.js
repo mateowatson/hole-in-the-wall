@@ -36,16 +36,12 @@ import toast from './items/toast'
 
 export default {
     state: {
-        secondsLeftInDay: 15,
+        secondsLeftInDay: 1200,
 
         // referring to current ticket
         timeUp: false,
-
-        newStartTime: 0,
-
-        lastTime: 0,
-
-        deltaTime: 0,
+        ticketStartTime: 0,
+        secondsLeftInTicket: 0,
 
         money: 300.00,
 
@@ -177,6 +173,29 @@ export default {
             state.secondsLeftInDay -= s
         },
 
+        m_reduce_seconds_left_in_ticket(state, s) {
+            if(state.secondsLeftInTicket - s > 0) {
+                state.secondsLeftInTicket -= s
+                state.timeUp = false
+            } else {
+                state.secondsLeftInTicket = 0
+                state.timeUp = true
+            }
+        },
+
+        m_set_seconds_left_in_ticket(state, s) {
+            state.secondsLeftInTicket = s
+            state.timeUp = false
+        },
+
+        m_set_last_ticket_time(state, time) {
+            state.lastTicketTime = time
+        },
+
+        m_set_ticket_start_time(state, time) {
+            state.ticketStartTime = time
+        },
+
         m_ticket_lose_first(state) {
             let ticketLost = state.tickets[0]
             if(!ticketLost) return
@@ -188,15 +207,9 @@ export default {
             state.money -= moneyLost
             state.tickets.shift()
             // Restart timer
-            state.newStartTime = Date.now() / 1000
-        },
-
-        m_set_last_time(state, t) {
-            state.lastTime = t
-        },
-
-        m_set_delta_time(state, dt) {
-            state.deltaTime = dt
+            state.ticketStartTime = Date.now() / 1000
+            state.lastTicketTime = Date.now() / 1000
+            state.timeUp = false
         },
 
         m_ticket_fulfill(state, ticket) {
@@ -221,7 +234,9 @@ export default {
             }, 0)
             state.money += ticketPrice
             // Restart timer
-            state.newStartTime = Date.now() / 1000
+            state.ticketStartTime = Date.now() / 1000
+            state.lastTicketTime = Date.now() / 1000
+            state.timeUp = false
         },
 
         m_thing_increment(state, thing) {
@@ -268,15 +283,6 @@ export default {
         m_time_up(state, bool) {
             state.timeUp = bool
         },
-    },
-
-    actions: {
-        a_set_game_time({ state, commit }, ms) {
-            const t = ms / 1000; // Let's work in seconds
-            const dt = t - state.lastTime;
-            commit('m_set_last_time', t)
-            commit('m_set_delta_time', dt)
-        }
     },
 
     getters: {

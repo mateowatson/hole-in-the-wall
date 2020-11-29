@@ -17,7 +17,4 @@ export default {
             { name: 'Grill', amount: 1 },
         ]
     },
-    postIngredients: [
-        'Ketchup', 'Cheese'
-    ]
 }

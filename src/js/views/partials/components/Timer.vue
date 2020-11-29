@@ -1,7 +1,7 @@
 <template>
     <div class="position-relative w-100">
         <p class="small mb-1" :class="timeUp ? 'badge badge-danger' : ''">
-            {{ secondsLeft }} seconds remaining
+            {{ Math.floor(secondsLeftInTicket) }} seconds remaining
         </p>
         <div class="hitw_progress">
             <div class="hitw_progress__bar" :style="'width: '+percTimeLeft+'%;'"></div>
@@ -15,29 +15,19 @@ import { mapState } from 'vuex'
 export default {
     props: ['secondsAllotted'],
 
-    data() {
-        return {
-            lastTime: 0,
-        }
-    },
-
     watch: {
-        secondsLeft(newVal, oldVal) {
+        /* secondsLeftInTicket(newVal, oldVal) {
             if(newVal < oldVal && newVal === 0) {
                 this.$store.commit('m_time_up', true)
             } else if(newVal > oldVal) {
                 this.$store.commit('m_time_up', false)
             }
-        },
+        }, */
     },
 
     computed: {
-        startTime() {
-            return this.newStartTime ? this.newStartTime : Date.now() / 1000
-        },
-
         secondsExpired() {
-            return (this.lastTime - this.startTime).toFixed(0)
+            return (this.secondsAllotted - this.secondsLeftInTicket).toFixed(0)
         },
 
         percTimeExpired() {
@@ -47,29 +37,29 @@ export default {
         percTimeLeft() {
             return 100 - this.percTimeExpired
         },
-
-        secondsLeft() {
-            const secondsleft = this.secondsAllotted - this.secondsExpired
-            return secondsleft >= 0 ? secondsleft : 0
-        },
-
         ...mapState([
-            'newStartTime','timeUp','tickets'
+            'ticketStartTime','secondsLeftInTicket','timeUp'
         ]),
-    },
-
-    methods: {
-        setLastTime(time) {
-            this.lastTime = time
-            if(!this.tickets.length) return
-            setTimeout(this.setLastTime, 60, Date.now() / 1000)
-        },
     },
     
     created() {
-        const time = Date.now() / 1000
-        this.lastTime = time
-        setTimeout(this.setLastTime, 60, time)
+        /* setTimeout(function setLastTicketTime(t) {
+            if(this.ticketStartTime <= 0)
+                this.$store.commit('m_set_ticket_start_time', t / 1000)
+            this.$store.commit('m_set_last_ticket_time', t / 1000)
+            setTimeout(setLastTicketTime.bind(this), 300, Date.now())
+        }.bind(this), 300, Date.now()) */
+        setTimeout(function reduceSecondsLeftInTicket(t) {
+            // "delta time"
+            let dt = Date.now() - t
+            //this.secondsLeftInDay -= (dt / 1000)
+            if(!this.timeUp && this.secondsLeftInTicket <= 0) {
+                this.$store.commit('m_set_seconds_left_in_ticket', this.secondsAllotted)
+            } else {
+                this.$store.commit('m_reduce_seconds_left_in_ticket', dt / 1000)
+            }
+            setTimeout(reduceSecondsLeftInTicket.bind(this), 300, Date.now())
+        }.bind(this), 300, Date.now())
     },
 }
 </script>
