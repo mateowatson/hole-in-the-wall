@@ -36,7 +36,7 @@ import toast from './items/toast'
 
 export default {
     state: {
-        secondsLeftInDay: 1200,
+        secondsLeftInDay: 10,
 
         // referring to current ticket
         timeUp: false,
@@ -44,6 +44,8 @@ export default {
         secondsLeftInTicket: 0,
 
         money: 300.00,
+
+        needToPayEndOfDayFees: true,
 
         ingredients: [
             { name: 'Ground Beef', image: 'images/ground-beef.png', amount: 0, },

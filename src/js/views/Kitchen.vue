@@ -145,6 +145,11 @@ export default {
     },
 
     created() {
+        if(this.secondsLeftInDay <= 0) {
+            this.$router.push('/')
+            return
+        }
+
         if(this.timeUp) {
             this.initTimeUp()
         }
@@ -156,11 +161,6 @@ export default {
             this.$store.commit('m_reduce_seconds_left_in_day', dt / 1000)
             setTimeout(reduceSecondsLeftInDay.bind(this), 300, Date.now())
         }.bind(this), 300, Date.now())
-    },
-
-    beforeRouteEnter (to, from, next) {
-        if(to.name === 'Kitchen' && this.secondsLeftInDay <= 0) next({ name: from.name })
-        else next()
     },
 
     beforeRouteLeave (to, from, next) {
