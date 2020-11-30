@@ -137,7 +137,7 @@ export default {
 
     created() {
         if(this.secondsLeftInDay <= 0) {
-            this.$router.push('/')
+            this.$router.push('/pay-expenses')
             return
         }
 

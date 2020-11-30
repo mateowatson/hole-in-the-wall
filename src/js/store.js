@@ -41,7 +41,7 @@ export default {
         secondsPerDay: 300,
         secondsLeftInDay: 300,
 
-        money: 300.00,
+        money: 0,
 
         expenses: [
             {
@@ -57,51 +57,51 @@ export default {
         ],
 
         ingredients: [
-            { name: 'Ground Beef', image: 'images/ground-beef.png', stocked: true,  amount: 0,},
-            { name: 'Chicken', image: 'images/cheddar-cheese.png', stocked: false, amount: 0, },
-            { name: 'Bun', image: 'images/bun.png', stocked: true,  amount: 0,},
-            { name: 'Bread', image: 'images/bread.png', stocked: false, amount: 0, },
-            { name: 'Ketchup', image: 'images/ketchup.png', stocked: false, amount: 0, },
-            { name: 'Corn', image: 'images/corn.png', stocked: false, amount: 0, },
-            { name: 'Green Beans', image: 'images/green-beans.png', stocked: false, amount: 0, },
-            { name: 'Bell Peppers', image: 'images/bell-peppers.png', stocked: false, amount: 0, },
-            { name: 'Potatoes', image: 'images/potatoes.png', stocked: true,  amount: 0,},
-            { name: 'Milk', image: 'images/milk.png', stocked: false, amount: 0, },
-            { name: 'Flour', image: 'images/flour.png', stocked: false, amount: 0, },
-            { name: 'Egg', image: 'images/egg.png', stocked: false, amount: 0, },
-            { name: 'Cheddar Cheese', image: 'images/cheddar-cheese.png', stocked: false, amount: 0, },
-            { name: 'Mayo', image: 'images/mayo.png', stocked: false, amount: 0, },
-            { name: 'Lettuce', image: 'images/lettuce.png', stocked: false, amount: 0, },
-            { name: 'Tomatoes', image: 'images/tomatoes.png', stocked: false, amount: 0, },
-            { name: 'Bacon', image: 'images/bacon.png', stocked: false, amount: 0, },
-            { name: 'Cream of Mushroom', image: 'images/cream-of-mushroom.png', stocked: false, amount: 0, },
-            { name: 'Onions', image: 'images/onions.png', stocked: false, amount: 0, },
-            { name: 'Bleu Cheese', image: 'images/bleu-cheese.png', stocked: false, amount: 0, },
-            { name: 'Beans', image: 'images/beans.png', stocked: false, amount: 0, },
-            { name: 'Rice', image: 'images/rice.png', stocked: false, amount: 0, },
-            { name: 'Sausage', image: 'images/sausage.png', stocked: false, amount: 0, },
-            { name: 'Cajun Seasoning', image: 'images/cajun-seasoning.png', stocked: false, amount: 0, },
+            { name: 'Ground Beef', cost: 300, image: 'images/ground-beef.png', stocked: true,  amount: 0,},
+            { name: 'Chicken', cost: 5000, image: 'images/cheddar-cheese.png', stocked: false, amount: 0, },
+            { name: 'Bun', cost: 300, image: 'images/bun.png', stocked: true,  amount: 0,},
+            { name: 'Bread', cost: 500, image: 'images/bread.png', stocked: false, amount: 0, },
+            { name: 'Ketchup', cost: 300, image: 'images/ketchup.png', stocked: false, amount: 0, },
+            { name: 'Corn', cost: 500, image: 'images/corn.png', stocked: false, amount: 0, },
+            { name: 'Green Beans', cost: 500, image: 'images/green-beans.png', stocked: false, amount: 0, },
+            { name: 'Bell Peppers', cost: 700, image: 'images/bell-peppers.png', stocked: false, amount: 0, },
+            { name: 'Potatoes', cost: 300, image: 'images/potatoes.png', stocked: true,  amount: 0,},
+            { name: 'Milk', cost: 1000, image: 'images/milk.png', stocked: false, amount: 0, },
+            { name: 'Flour', cost: 1000, image: 'images/flour.png', stocked: false, amount: 0, },
+            { name: 'Egg', cost: 1500, image: 'images/egg.png', stocked: false, amount: 0, },
+            { name: 'Cheddar Cheese', cost: 2000, image: 'images/cheddar-cheese.png', stocked: false, amount: 0, },
+            { name: 'Mayo', cost: 500, image: 'images/mayo.png', stocked: false, amount: 0, },
+            { name: 'Lettuce', cost: 1500, image: 'images/lettuce.png', stocked: false, amount: 0, },
+            { name: 'Tomatoes', cost: 3000, image: 'images/tomatoes.png', stocked: false, amount: 0, },
+            { name: 'Bacon', cost: 3000, image: 'images/bacon.png', stocked: false, amount: 0, },
+            { name: 'Cream of Mushroom', cost: 2000, image: 'images/cream-of-mushroom.png', stocked: false, amount: 0, },
+            { name: 'Onions', cost: 1000, image: 'images/onions.png', stocked: false, amount: 0, },
+            { name: 'Bleu Cheese', cost: 10000, image: 'images/bleu-cheese.png', stocked: false, amount: 0, },
+            { name: 'Beans', cost: 4000, image: 'images/beans.png', stocked: false, amount: 0, },
+            { name: 'Rice', cost: 8000, image: 'images/rice.png', stocked: false, amount: 0, },
+            { name: 'Sausage', cost: 7000, image: 'images/sausage.png', stocked: false, amount: 0, },
+            { name: 'Cajun Seasoning', cost: 1000, image: 'images/cajun-seasoning.png', stocked: false, amount: 0, },
         ],
 
         actions: [
-            { name: 'Make Patty', image: 'images/make-patty.png', stocked: true, amount: 0, },
-            { name: 'Mix', image: 'images/mix.png', stocked: false, amount: 0, },
-            { name: 'Mash', image: 'images/mash.png', stocked: false, amount: 0, },
-            { name: 'Chop', image: 'images/chop.png', stocked: true, amount: 0, },
-            { name: 'Batter', image: 'images/batter.png', stocked: false, amount: 0, },
-            { name: 'Blend', image: 'images/blend.png', stocked: false, amount: 0, },
-            { name: 'Slice', image: 'images/slice.png', stocked: false, amount: 0, },
-            { name: 'Stir', image: 'images/stir.png', stocked: false, amount: 0, },
-            { name: 'Roll Dough', image: 'images/roll-dough.png', stocked: false, amount: 0, },
+            { name: 'Make Patty', cost: 300, image: 'images/make-patty.png', stocked: true, amount: 0, },
+            { name: 'Mix', cost: 300, image: 'images/mix.png', stocked: false, amount: 0, },
+            { name: 'Mash', cost: 300, image: 'images/mash.png', stocked: false, amount: 0, },
+            { name: 'Chop', cost: 1000, image: 'images/chop.png', stocked: true, amount: 0, },
+            { name: 'Batter', cost: 1500, image: 'images/batter.png', stocked: false, amount: 0, },
+            { name: 'Blend', cost: 3000, image: 'images/blend.png', stocked: false, amount: 0, },
+            { name: 'Slice', cost: 1000, image: 'images/slice.png', stocked: false, amount: 0, },
+            { name: 'Stir', cost: 300, image: 'images/stir.png', stocked: false, amount: 0, },
+            { name: 'Roll Dough', cost: 300, image: 'images/roll-dough.png', stocked: false, amount: 0, },
         ],
 
         cookingMethods: [
-            { name: 'Grill', image: 'images/grill.png', stocked: true, amount: 0, },
-            { name: 'Bake', image: 'images/bake.png', stocked: false, amount: 0, },
-            { name: 'Boil', image: 'images/boil.png', stocked: false, amount: 0, },
-            { name: 'Sautee', image: 'images/sautee.png', stocked: false, amount: 0, },
-            { name: 'Fry', image: 'images/fry.png', stocked: true, amount: 0, },
-            { name: 'Slow Cook', image: 'images/slow-cook.png', stocked: false, amount: 0, },
+            { name: 'Grill', cost: 300, image: 'images/grill.png', stocked: true, amount: 0, },
+            { name: 'Bake', cost: 5000, image: 'images/bake.png', stocked: false, amount: 0, },
+            { name: 'Boil', cost: 1000, image: 'images/boil.png', stocked: false, amount: 0, },
+            { name: 'Sautee', cost: 1000, image: 'images/sautee.png', stocked: false, amount: 0, },
+            { name: 'Fry', cost: 300, image: 'images/fry.png', stocked: true, amount: 0, },
+            { name: 'Slow Cook', cost: 5000, image: 'images/slow-cook.png', stocked: false, amount: 0, },
         ],
 
         items: [
@@ -181,6 +181,13 @@ export default {
 
 
     mutations: {
+        m_buy_thing(state, thing) {
+            let sThing = state[thing.type].find(sThing => sThing.name === thing.name)
+            if(!sThing || sThing.stocked === true) return
+            sThing.stocked = true
+            state.money -= sThing.cost
+        },
+
         m_reduce_seconds_left_in_ticket(state, { ticket, dt }) {
             let stateTicket = state.tickets.find(sTicket => sTicket.name === ticket.name)
             if(!stateTicket) return

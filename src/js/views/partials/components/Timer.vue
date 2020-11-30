@@ -1,11 +1,13 @@
 <template>
     <div class="position-relative w-100">
-        <p class="small mb-1" :class="aboutToRunOut ? 'badge badge-danger' : ''">
-            {{ formattedSecondsLeft }} seconds remaining
+        <p class="mb-1">
+            <span class="lead"
+                :class="aboutToRunOut ? 'bg-danger text-white font-weight-bold p-2 rounded' : ''">{{ formattedSecondsLeft }}</span>
+            seconds remaining
         </p>
-        <div class="hitw_progress">
+        <!-- <div class="hitw_progress">
             <div class="hitw_progress__bar" :style="'width: '+percentLeft+'%;'"></div>
-        </div>
+        </div> -->
     </div>
 </template>
 
