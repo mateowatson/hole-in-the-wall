@@ -402,7 +402,7 @@ export default {
                 item.reqs.ingredients.forEach(requiredIngredient => {
                     state.ingredients.forEach(ingredient => {
                         if(ingredient.name === requiredIngredient.name &&
-                            ingredient.stocked) {
+                            !ingredient.stocked) {
                             matchesIngredients = false
                         }
                     })
@@ -411,7 +411,7 @@ export default {
                 item.reqs.actions.forEach(requiredAction => {
                     state.actions.forEach(action => {
                         if(action.name === requiredAction.name &&
-                            action.stocked) {
+                            !action.stocked) {
                             matchesActions = false
                         }
                     })
@@ -420,7 +420,7 @@ export default {
                 item.reqs.cookingMethods.forEach(requiredCookingMethod => {
                     state.cookingMethods.forEach(cookingMethod => {
                         if(cookingMethod.name === requiredCookingMethod.name &&
-                            cookingMethod.stocked) {
+                            !cookingMethod.stocked) {
                             matchesCookingMethods = false
                         }
                     })

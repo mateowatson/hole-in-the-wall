@@ -38,7 +38,9 @@
                     {{ formattedSecInDay }} s
                     left in day
                 </li>
-                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">
+                    <router-link to="/">Pause / Home</router-link>
+                </li>
             </ul>
 
             <div class="card mt-3">
