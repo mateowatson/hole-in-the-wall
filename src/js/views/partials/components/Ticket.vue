@@ -57,13 +57,14 @@ export default {
         ]),
 
         ...mapGetters([
-            'possibleTickets'
+            'possibleTickets','secondsAllotted'
         ]),
     },
 
     methods: {
         fulfill() {
             this.$store.commit('m_ticket_fulfill', {...this.ticket})
+            this.$store.commit('m_set_seconds_left_in_ticket', this.secondsAllotted)
         },
     },
 

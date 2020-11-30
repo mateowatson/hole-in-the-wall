@@ -4,8 +4,7 @@
         <div class="hitw_tickets col-lg-2 p-0 bg-dark text-light">
             <h2 class="h5 p-3">Tickets</h2>
             <div class="pl-3 pr-3 pb-3">
-                <Timer v-if="tickets.length"
-                    :seconds-allotted="tickets[0] ? tickets[0].secondsAllotted : 0" />
+                <Timer v-if="tickets.length" />
             </div>
             <Ticket v-for="(ticket, idx) in tickets" :key="idx+'tick'" :ticket="ticket" />
         </div>

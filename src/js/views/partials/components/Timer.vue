@@ -10,11 +10,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
-    props: ['secondsAllotted'],
-
     watch: {
         /* secondsLeftInTicket(newVal, oldVal) {
             if(newVal < oldVal && newVal === 0) {
@@ -37,8 +35,13 @@ export default {
         percTimeLeft() {
             return 100 - this.percTimeExpired
         },
+
         ...mapState([
-            'ticketStartTime','secondsLeftInTicket','timeUp'
+            'ticketStartTime','secondsLeftInTicket','timeUp',
+        ]),
+
+        ...mapGetters([
+            'secondsAllotted',
         ]),
     },
     

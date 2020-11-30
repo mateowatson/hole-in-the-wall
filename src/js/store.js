@@ -246,6 +246,7 @@ export default {
             state.ticketStartTime = Date.now() / 1000
             state.lastTicketTime = Date.now() / 1000
             state.timeUp = false
+            //state.secondsLeftInTicket = state.secondsAllotted
         },
 
         m_ticket_fulfill(state, ticket) {
@@ -322,7 +323,11 @@ export default {
     },
 
     getters: {
-        possibleTickets: state => {
+        secondsAllotted(state) {
+            return state.tickets[0] ? state.tickets[0].secondsAllotted : 0
+        },
+
+        possibleTickets(state) {
             let possibleTickets = []
 
             state.tickets.forEach(ticket => {
@@ -349,7 +354,7 @@ export default {
             return possibleTickets
         },
 
-        possibleItems: state => {
+        possibleItems(state) {
             let possibleItems = []
 
             state.items.forEach(item => {
@@ -391,7 +396,7 @@ export default {
             return possibleItems
         },
 
-        itemsOffered: state => {
+        itemsOffered(state) {
             let possibleItems = []
 
             state.items.forEach(item => {
