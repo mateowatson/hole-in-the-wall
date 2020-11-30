@@ -34,10 +34,12 @@ import biscuitsAndGravy from './items/biscuits-and-gravy'
 import stirFry from './items/stir-fry'
 import toast from './items/toast'
 
+import utils from './utils'
+
 export default {
     state: {
-        secondsPerDay: 600,
-        secondsLeftInDay: 600,
+        secondsPerDay: 300,
+        secondsLeftInDay: 300,
 
         // referring to current ticket
         timeUp: false,
@@ -145,13 +147,14 @@ export default {
             { ...toast },
         ],
 
-        tickets: [
+        tickets: [],
+
+        ticketsExamples: [
             {
                 name: '20201126205534',
                 items: [
                     { name: 'Burger', qty: 1 },
                 ],
-                timeCreated: '20201126223810',
                 secondsAllotted: 15,
             },
             {
@@ -169,7 +172,6 @@ export default {
                     { name: 'Burger', qty: 3 },
                     { name: 'Meatloaf', qty: 2 }
                 ],
-                timeCreated: '20201126223810',
                 secondsAllotted: 45,
             }
         ],
@@ -228,6 +230,10 @@ export default {
             state.ticketStartTime = time
         },
 
+        m_tickets_create(state, tickets) {
+            state.tickets = tickets
+        },
+
         m_tickets_clear(state) {
             state.tickets = []
         },
@@ -250,6 +256,11 @@ export default {
         },
 
         m_ticket_fulfill(state, ticket) {
+            let shouldRestartTimer = false
+            if(state.tickets[0] && ticket.name === state.tickets[0].name) {
+                console.log('bbbb');
+                shouldRestartTimer = true
+            }
             state.tickets = state.tickets.filter(stateTicket => {
                 return stateTicket.name !== ticket.name
             })
@@ -270,10 +281,12 @@ export default {
                 return acc
             }, 0)
             state.money += ticketPrice
-            // Restart timer
-            state.ticketStartTime = Date.now() / 1000
-            state.lastTicketTime = Date.now() / 1000
-            state.timeUp = false
+            // Maybe restart timer
+            if(shouldRestartTimer) {
+                state.ticketStartTime = Date.now() / 1000
+                state.lastTicketTime = Date.now() / 1000
+                state.timeUp = false
+            }
         },
 
         m_thing_increment(state, thing) {
@@ -319,6 +332,55 @@ export default {
 
         m_time_up(state, bool) {
             state.timeUp = bool
+        },
+    },
+
+    actions: {
+        a_tickets_create({state, getters, commit}) {
+            let ticketsSecondsAllottedSum = 0
+            let ticketNamesUsed = []
+            let tickets = []
+            
+            ticketsCreate()
+
+            commit('m_tickets_create', tickets)
+
+            function ticketsCreate() {
+                let newTicket = {}
+                newTicket.name = utils.rand(1, 200).toString() + Date.now().toString()
+                if(ticketNamesUsed.includes(newTicket.name)) {
+                    return ticketsCreate()
+                }
+                newTicket.items = []
+                newTicket.secondsAllotted = 0
+                let numItems = utils.rand(1, 6)
+                let itemsUsed = []
+                for (let i = 0; i < numItems; i++) {
+                    let itemsOffered = getters.itemsOffered
+                        .filter(gi => !itemsUsed.includes(gi.name))
+                    if(!itemsOffered.length > 0)
+                        continue;
+                    newTicket.items[i] = {}
+                    newTicket.items[i].name = utils.randOneFrom(itemsOffered).name
+                    itemsUsed.push(newTicket.items[i].name)
+                    newTicket.items[i].qty = utils.rand(1, 5)
+                    let item = itemsOffered
+                        .find(sitem => sitem.name === newTicket.items[i].name)
+                    let ingLength = item.reqs.ingredients.length > 0 ? item.reqs.ingredients.length : 1
+                    let actLength = item.reqs.actions.length > 0 ? item.reqs.actions.length : 1
+                    let cookLength = item.reqs.cookingMethods.length > 0 ? item.reqs.cookingMethods.length : 1
+                    newTicket.secondsAllotted += ingLength * newTicket.items[i].qty
+                    newTicket.secondsAllotted += actLength * newTicket.items[i].qty
+                    newTicket.secondsAllotted += cookLength * newTicket.items[i].qty
+                }
+                if(newTicket.secondsAllotted < 10)
+                    newTicket.secondsAllotted = 10
+                ticketsSecondsAllottedSum += newTicket.secondsAllotted
+                ticketNamesUsed.push(newTicket.name)
+                tickets.push(newTicket)
+                if(ticketsSecondsAllottedSum < state.secondsPerDay)
+                    return ticketsCreate()
+            }
         },
     },
 

@@ -100,7 +100,11 @@ export default {
                     setTimeout(commitLoss.bind(this), 300, Date.now())
                 }
             }.bind(this), 2000, Date.now())
-        }
+        },
+
+        createTickets() {
+            this.$store.dispatch('a_tickets_create')
+        },
     },
 
     watch: {
@@ -124,6 +128,11 @@ export default {
                     }
                 }.bind(this), 3000, Date.now())
             }
+        },
+
+        tickets(newVal, oldVal) {
+            if(newVal.length <= 0)
+                this.createTickets()
         },
     },
 
@@ -155,6 +164,8 @@ export default {
 
         if(this.timeUp) {
             this.initTimeUp()
+        } else {
+            this.createTickets()
         }
 
         setTimeout(function reduceSecondsLeftInDay(t) {
@@ -164,6 +175,8 @@ export default {
             this.$store.commit('m_reduce_seconds_left_in_day', dt / 1000)
             setTimeout(reduceSecondsLeftInDay.bind(this), 300, Date.now())
         }.bind(this), 300, Date.now())
+
+
     },
 
     beforeRouteLeave (to, from, next) {
