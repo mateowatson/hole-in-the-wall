@@ -306,7 +306,16 @@ export default {
     },
 
     actions: {
+        a_initialize_store({ state, }) {
+            if (localStorage.getItem('hitw_state')) {
+                this.replaceState(
+                    Object.assign(state, JSON.parse(localStorage.getItem('hitw_state')))
+                );
+            }
+        },
+
         a_tickets_create({state, getters, commit}) {
+            if(state.tickets.length) return
             let ticketsSecondsAllottedSum = 0
             let ticketNamesUsed = []
             let tickets = []

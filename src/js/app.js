@@ -14,9 +14,18 @@ const router = new VueRouter({
     routes
 })
 
+store.subscribe((mutation, state) => {
+    if (state) {
+        localStorage.setItem('hitw_state', JSON.stringify(state));
+    }
+});
+
 const app = new Vue({
     el: '#hitw-app',
     router,
-    store
+    store,
+    created() {
+        this.$store.dispatch('a_initialize_store');
+    },
 })
 
