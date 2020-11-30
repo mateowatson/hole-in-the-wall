@@ -41,11 +41,6 @@ export default {
         secondsPerDay: 300,
         secondsLeftInDay: 300,
 
-        // referring to current ticket
-        timeUp: false,
-        ticketStartTime: 0,
-        secondsLeftInTicket: 0,
-
         money: 300.00,
 
         expenses: [
@@ -207,29 +202,6 @@ export default {
             state.secondsLeftInDay -= s
         },
 
-        m_reduce_seconds_left_in_ticket(state, s) {
-            if(state.secondsLeftInTicket - s > 0) {
-                state.secondsLeftInTicket -= s
-                state.timeUp = false
-            } else {
-                state.secondsLeftInTicket = 0
-                state.timeUp = true
-            }
-        },
-
-        m_set_seconds_left_in_ticket(state, s) {
-            state.secondsLeftInTicket = s
-            state.timeUp = false
-        },
-
-        m_set_last_ticket_time(state, time) {
-            state.lastTicketTime = time
-        },
-
-        m_set_ticket_start_time(state, time) {
-            state.ticketStartTime = time
-        },
-
         m_tickets_create(state, tickets) {
             state.tickets = tickets
         },
@@ -249,9 +221,6 @@ export default {
             state.money -= moneyLost
             state.tickets.shift()
             // Restart timer
-            state.ticketStartTime = Date.now() / 1000
-            state.lastTicketTime = Date.now() / 1000
-            state.timeUp = false
             //state.secondsLeftInTicket = state.secondsAllotted
         },
 
@@ -282,11 +251,6 @@ export default {
             }, 0)
             state.money += ticketPrice
             // Maybe restart timer
-            if(shouldRestartTimer) {
-                state.ticketStartTime = Date.now() / 1000
-                state.lastTicketTime = Date.now() / 1000
-                state.timeUp = false
-            }
         },
 
         m_thing_increment(state, thing) {
@@ -328,10 +292,6 @@ export default {
             if(!match) return
             if(0 === match.amount) return
             match.amount--
-        },
-
-        m_time_up(state, bool) {
-            state.timeUp = bool
         },
     },
 
@@ -385,10 +345,7 @@ export default {
     },
 
     getters: {
-        secondsAllotted(state) {
-            return state.tickets[0] ? state.tickets[0].secondsAllotted : 0
-        },
-
+        // Check which tickets user may currently fulfill
         possibleTickets(state) {
             let possibleTickets = []
 
@@ -416,6 +373,7 @@ export default {
             return possibleTickets
         },
 
+        // Check which tickets user may currently cook
         possibleItems(state) {
             let possibleItems = []
 
@@ -458,6 +416,7 @@ export default {
             return possibleItems
         },
 
+        // Check which tickets user may cook overall, aka the restaurant menu
         itemsOffered(state) {
             let possibleItems = []
 

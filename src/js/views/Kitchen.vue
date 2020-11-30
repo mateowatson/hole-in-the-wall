@@ -91,30 +91,12 @@ import Timer from './partials/components/Timer'
 
 export default {
     methods: {
-        initTimeUp() {
-            setTimeout(function commitLoss(t) {
-                // check "delta time"
-                if(Date.now() - t >= 2000) {
-                    this.$store.commit('m_ticket_lose_first')
-                } else {
-                    setTimeout(commitLoss.bind(this), 300, Date.now())
-                }
-            }.bind(this), 2000, Date.now())
-        },
-
         createTickets() {
             this.$store.dispatch('a_tickets_create')
         },
     },
 
     watch: {
-        // Mercifully allow 3 seconds more after timeup
-        timeUp(newVal, oldVal) {
-            if(true === newVal && false === oldVal) {
-                this.initTimeUp()
-            }
-        },
-
         secondsLeftInDay(newVal, oldVal) {
             if(newVal < 0 && oldVal > 0) {
                 setTimeout(function initEndOfDay(t) {
@@ -148,7 +130,7 @@ export default {
         },
 
         ...mapState([
-            'ingredients','tickets','items','actions','cookingMethods','money','timeUp',
+            'ingredients','tickets','items','actions','cookingMethods','money',
             'secondsLeftInDay'
         ]),
         ...mapGetters([
@@ -162,11 +144,7 @@ export default {
             return
         }
 
-        if(this.timeUp) {
-            this.initTimeUp()
-        } else {
-            this.createTickets()
-        }
+        this.createTickets()
 
         setTimeout(function reduceSecondsLeftInDay(t) {
             // "delta time"
