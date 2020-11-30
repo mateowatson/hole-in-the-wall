@@ -13,7 +13,8 @@
                     </span>
                     <ul class="m-0 pl-3">
                         <TicketItem v-for="(ticketItem, idx) in ticket.items"
-                            :key="idx+'ticketitem'" :ticket-item="ticketItem" />
+                            :key="idx+'ticketitem'+ticket.name"
+                            :ticket-item="ticketItem" />
                     </ul>
                 </div>
             </div>

@@ -6,7 +6,7 @@
 
         <div class="container-fluid">
             <ul class="row list-unstyled">
-                <MenuItem v-for="(item, itemIdx) in alphaItems" :key="itemIdx+'item'"
+                <MenuItem v-for="(item, itemIdx) in alphaItems" :key="itemIdx+'item-menu'"
                     :item="item" />
             </ul>
         </div>

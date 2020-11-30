@@ -10,7 +10,7 @@
                 </span>
             </p>
 
-            <p v-for="(expense, idx) in expenses" :key="idx+'expense'">
+            <p v-for="(expense, idx) in expenses" :key="idx+'expense-paye'">
                 <button class="btn btn-primary" v-if="expense.due > 0"
                     @click="payExpense(expense)">
                     Pay {{ expense.name }}:

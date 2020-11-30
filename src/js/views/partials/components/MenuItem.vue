@@ -12,7 +12,7 @@
         <span class="d-block text-center">
             <span class="label small d-block">Ingredients:</span>
             <span v-for="(ingredient, ingIdx) in item.reqs.ingredients"
-                :key="ingIdx+'ing'"
+                :key="ingIdx+'ing-mi'"
                 class="small text-muted">
                 +{{ingredient.amount}}&nbsp;{{ingredient.name}},
             </span>
@@ -20,7 +20,7 @@
         <span class="d-block text-center">
             <span class="label small d-block">Actions:</span>
             <span v-for="(action, actIdx) in item.reqs.actions"
-                :key="actIdx+'act'"
+                :key="actIdx+'act-mi'"
                 class="small text-muted">
                 +{{action.amount}}&nbsp;{{action.name}},
             </span>
@@ -28,7 +28,7 @@
         <span class="d-block text-center">
             <span class="label small d-block">Cook:</span>
             <span v-for="(cookingMethod, cookIdx) in item.reqs.cookingMethods"
-                :key="cookIdx+'cook'"
+                :key="cookIdx+'cook-mi'"
                 class="small text-muted">
                 +{{cookingMethod.amount}}&nbsp;{{cookingMethod.name}},
             </span>

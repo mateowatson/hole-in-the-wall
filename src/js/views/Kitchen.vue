@@ -3,7 +3,7 @@
     <div class="row">
         <div class="hitw_tickets col-lg-2 p-0 bg-dark text-light">
             <h2 class="h5 p-3">Tickets</h2>
-            <Ticket v-for="(ticket, idx) in tickets" :key="idx+'tick'" :ticket="ticket" />
+            <Ticket v-for="ticket in tickets" :key="ticket.name" :ticket="ticket" />
         </div>
 
         <div class="hitw_possible-items col-lg-2 offset-lg-2 border-right">
@@ -16,7 +16,7 @@
             <h2 class="h5 pt-3">Items</h2>
 
             <ul class="list-unstyled">
-                <Item v-for="(item, idx) in items" :key="idx+'item-amt'"
+                <Item v-for="(item, idx) in items" :key="idx+'item-amt-kit'"
                     :thing="item" :type="'items'" />
             </ul>
         </div>
@@ -46,7 +46,7 @@
                     </h2>
 
                     <ImgButton v-for="(ingredient, idx) in ingredients"
-                        :key="idx+'ing'" :thing="ingredient"
+                        :key="idx+'ing-kit'" :thing="ingredient"
                         :type="'ingredients'" />
                 </div>
             </div>
@@ -58,7 +58,7 @@
                     </h2>
 
                     <ImgButton v-for="(action, idx) in actions"
-                        :key="idx+'act'" :thing="action"
+                        :key="idx+'act-kit'" :thing="action"
                         :type="'actions'" />
                 </div>
             </div>
@@ -70,7 +70,7 @@
                     </h2>
 
                     <ImgButton v-for="(cookingMethod, idx) in cookingMethods"
-                        :key="idx+'coo'" :thing="cookingMethod"
+                        :key="idx+'coo-kit'" :thing="cookingMethod"
                         :type="'cookingMethods'" />
                 </div>
             </div>
