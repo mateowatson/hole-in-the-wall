@@ -58,7 +58,7 @@ export default {
 
         ingredients: [
             { name: 'Ground Beef', cost: 300, image: 'images/ground-beef.png', stocked: true,  amount: 0,},
-            { name: 'Chicken', cost: 5000, image: 'images/cheddar-cheese.png', stocked: false, amount: 0, },
+            { name: 'Chicken', cost: 5000, image: 'images/chicken.png', stocked: false, amount: 0, },
             { name: 'Bun', cost: 300, image: 'images/bun.png', stocked: true,  amount: 0,},
             { name: 'Bread', cost: 500, image: 'images/bread.png', stocked: false, amount: 0, },
             { name: 'Ketchup', cost: 300, image: 'images/ketchup.png', stocked: false, amount: 0, },
@@ -306,8 +306,17 @@ export default {
     },
 
     actions: {
-        a_initialize_store({ state, }) {
+        a_initialize_store({ state, commit }) {
             if (localStorage.getItem('hitw_state')) {
+                // Fix chicken error
+                let parsedLocalState = JSON.parse(localStorage.getItem('hitw_state'));
+                let chicken = parsedLocalState.ingredients.find(ing => ing.name === 'Chicken')
+                if(chicken && chicken.image === 'images/cheddar-cheese.png') {
+                    chicken.image = 'images/chicken.png'
+                    localStorage.setItem('hitw_state', JSON.stringify(parsedLocalState));
+                }
+
+                // Hydrate persisted storage
                 this.replaceState(
                     Object.assign(state, JSON.parse(localStorage.getItem('hitw_state')))
                 );
