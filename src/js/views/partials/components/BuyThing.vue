@@ -28,7 +28,7 @@ export default {
 
     methods: {
         buyThing() {
-            if(!canBuy) return
+            if(!this.canBuy) return
             this.$store.commit('m_buy_thing', {
                 type: this.type,
                 ...this.thing
