@@ -2,6 +2,9 @@
     <div class="border-bottom border-bottom-light container-fluid pt-3 pb-3"
         :class="isPossible ? 'bg-warning text-dark' : ''">
         <div class="row">
+            <div class="col-12 mb-3">
+                <Timer :ticket="ticket" />
+            </div>
             <div class="col-8 d-flex align-items-center"
                 :class="isPossible ? 'col-8' : 'col-12'">
                 <div>
@@ -29,6 +32,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import TicketItem from './TicketItem'
+import Timer from './Timer'
 
 export default {
     props: ['ticket'],
@@ -67,7 +71,7 @@ export default {
         },
     },
 
-    components: { TicketItem },
+    components: { TicketItem, Timer },
 }
 </script>
 

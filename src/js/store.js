@@ -151,6 +151,7 @@ export default {
                     { name: 'Burger', qty: 1 },
                 ],
                 secondsAllotted: 15,
+                timeCreated: 20201126223810,
             },
             {
                 name: '20201126085728',
@@ -180,6 +181,12 @@ export default {
 
 
     mutations: {
+        m_reduce_seconds_left_in_ticket(state, { ticket, dt }) {
+            let stateTicket = state.tickets.find(sTicket => sTicket.name === ticket.name)
+            if(!stateTicket) return
+            stateTicket.secondsLeft -= dt
+        },
+
         m_add_per_day_expenses(state) {
             state.expenses.forEach(expense => {
                 expense.due = expense.perDayCost
@@ -210,18 +217,14 @@ export default {
             state.tickets = []
         },
 
-        m_ticket_lose_first(state) {
-            let ticketLost = state.tickets[0]
-            if(!ticketLost) return
-            let moneyLost = ticketLost.items.reduce((acc, item) => {
-                let itemCost = 2 * item.qty
-                acc += itemCost
-                return acc
-            }, 0)
-            state.money -= moneyLost
-            state.tickets.shift()
-            // Restart timer
-            //state.secondsLeftInTicket = state.secondsAllotted
+        m_ticket_remove(state, ticket) {
+            let cost = ticket.items.length*2
+            /* let stateTicketIdx = state.tickets
+                .findIndex(sTicket => sTicket.name === ticket.name)
+            state.tickets.splice(stateTicketIdx, 1) */
+            state.tickets = state.tickets
+            .filter(sTicket => sTicket.name !== ticket.name)
+            state.money -= cost
         },
 
         m_ticket_fulfill(state, ticket) {
@@ -335,7 +338,11 @@ export default {
                 }
                 if(newTicket.secondsAllotted < 10)
                     newTicket.secondsAllotted = 10
+                let relativeSecondsAllotted = ticketsSecondsAllottedSum
                 ticketsSecondsAllottedSum += newTicket.secondsAllotted
+                // make seconds allotted relative at this juncture
+                newTicket.secondsAllotted += relativeSecondsAllotted
+                newTicket.secondsLeft = newTicket.secondsAllotted
                 ticketNamesUsed.push(newTicket.name)
                 tickets.push(newTicket)
                 if(ticketsSecondsAllottedSum < state.secondsPerDay)
